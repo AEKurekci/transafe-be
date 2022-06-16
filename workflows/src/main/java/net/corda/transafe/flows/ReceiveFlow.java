@@ -13,6 +13,7 @@ import net.corda.core.crypto.TransactionSignature;
 import net.corda.core.flows.*;
 import net.corda.core.identity.AnonymousParty;
 import net.corda.core.identity.Party;
+import net.corda.core.node.StatesToRecord;
 import net.corda.core.node.services.Vault;
 import net.corda.core.node.services.vault.QueryCriteria;
 import net.corda.core.transactions.SignedTransaction;
@@ -169,12 +170,8 @@ public class ReceiveFlow {
             // Stage 5.
             progressTracker.setCurrentStep(FINALISING_TRANSACTION);
             // Notarise and record the transaction in both parties' vaults.
-            System.out.println("inputTransferState.getLinearId() --> " + inputTransferState.getLinearId());
-            System.out.println("outputTransferState.getLinearId() --> " + outputTransferState.getLinearId());
-            subFlow(new SyncTransfers(inputTransferState.getLinearId().toString(),targetAccount.getHost()));
-            System.out.println("\n--Synchronized--\n");
             SignedTransaction fullySignedTx = subFlow(new FinalityFlow(signedByCounterParty, Arrays.asList(otherPartySession).stream()
-                    .filter(it -> it.getCounterparty() != getOurIdentity()).collect(Collectors.toList())));
+                    .filter(it -> it.getCounterparty() != getOurIdentity()).collect(Collectors.toList()), StatesToRecord.ALL_VISIBLE));
             System.out.println("fullySignedTx ---> " + fullySignedTx.toString());
             subFlow(new SyncTransfers(outputTransferState.getLinearId().toString(),targetAccount.getHost()));
             System.out.println("\n--Synchronized--\n");

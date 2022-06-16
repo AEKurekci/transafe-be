@@ -14,6 +14,7 @@ import net.corda.core.flows.*;
 import net.corda.core.identity.AnonymousParty;
 import net.corda.core.identity.CordaX500Name;
 import net.corda.core.identity.Party;
+import net.corda.core.node.StatesToRecord;
 import net.corda.core.transactions.SignedTransaction;
 import net.corda.core.transactions.TransactionBuilder;
 import net.corda.core.utilities.ProgressTracker;
@@ -151,7 +152,7 @@ public class TransferFlow {
             progressTracker.setCurrentStep(FINALISING_TRANSACTION);
             // Notarise and record the transaction in both parties' vaults.
             SignedTransaction fullySignedTx = subFlow(new FinalityFlow(signedByCounterParty, Arrays.asList(otherPartySession).stream()
-                    .filter(it -> it.getCounterparty() != getOurIdentity()).collect(Collectors.toList())));
+                    .filter(it -> it.getCounterparty() != getOurIdentity()).collect(Collectors.toList()), StatesToRecord.ALL_VISIBLE));
             subFlow(new SyncTransfers(transferState.getLinearId().toString(),targetAccount.getHost()));
             return fullySignedTx;
         }
