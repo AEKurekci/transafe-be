@@ -8,9 +8,14 @@ import net.corda.core.identity.CordaX500Name;
 import net.corda.core.identity.Party;
 import net.corda.core.messaging.CordaRPCOps;
 import net.corda.core.node.NodeInfo;
+import net.corda.core.node.services.Vault;
+import net.corda.core.node.services.vault.QueryCriteria;
+import net.corda.core.transactions.SignedTransaction;
 import net.corda.transafe.accountUtilities.CreateNewAccount;
 import net.corda.transafe.accountUtilities.MyTransfer;
+import net.corda.transafe.flows.GetAllTransactionsFlow;
 import net.corda.transafe.request.DocumentTransferRequest;
+import net.corda.transafe.request.GetAllTransfersRequest;
 import net.corda.transafe.request.HandShakeRequest;
 import net.corda.transafe.request.ReceiveFileRequest;
 import net.corda.transafe.response.DocumentTransferResponse;
@@ -35,6 +40,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
@@ -144,6 +150,14 @@ public class Controller {
     public List<StateAndRef<TransferState>> getIOUs() {
         // Filter by state type: IOU.
         return proxy.vaultQuery(TransferState.class).getStates();
+    }
+
+    @GetMapping(value = "getTransfersByLinearId",produces = APPLICATION_JSON_VALUE)
+    public List<StateAndRef<TransferState>> getTransfers(@RequestBody GetAllTransfersRequest request) throws ExecutionException, InterruptedException {
+        // Filter by state type: IOU.
+        List<StateAndRef<TransferState>> auditTrail = proxy.startFlowDynamic(GetAllTransactionsFlow.Initiator.class,
+                request.getLinearId()).getReturnValue().get();
+        return auditTrail;
     }
 
     @GetMapping(value = "getMyTransfers/{accountName}", produces = APPLICATION_JSON_VALUE)

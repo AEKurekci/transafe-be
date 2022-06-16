@@ -44,7 +44,7 @@ public class TransferState implements LinearState {
     }
 
     public TransferState receiveTransfer(AnonymousParty sender, AnonymousParty receiver){
-        return new TransferState(this.file, sender, this.senderAccount, receiver, this.receiverAccount, this.startDate, this.endDate, new UniqueIdentifier(), true);
+        return new TransferState(this.file, sender, this.senderAccount, receiver, this.receiverAccount, this.startDate, this.endDate, this.linearId, true);
     }
 
     /*@Override
