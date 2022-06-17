@@ -26,7 +26,9 @@ import net.corda.transafe.states.TransferState;
 
 import java.security.PublicKey;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import static net.corda.core.contracts.ContractsDSL.requireThat;
@@ -50,6 +52,7 @@ public class ReceiveFlow {
         private final Party fromParty;
         private final String sender;
         private final String receiver;
+        private final String linearId;
 
         private final Step GENERATING_TRANSACTION = new Step("Generating transaction based on new IOU.");
         private final Step VERIFYING_TRANSACTION = new Step("Verifying contract constraints.");
@@ -78,10 +81,11 @@ public class ReceiveFlow {
                 FINALISING_TRANSACTION
         );
 
-        public Initiator(Party fromParty, String sender, String receiver) {
+        public Initiator(Party fromParty, String sender, String receiver, String linearId) {
             this.fromParty = fromParty;
             this.sender = sender;
             this.receiver = receiver;
+            this.linearId = linearId;
         }
 
         @Override
@@ -117,11 +121,25 @@ public class ReceiveFlow {
             System.out.println("targetAcctAnonymousParty ---> "+targetAcctAnonymousParty.toString());
 
             // Retrieve the transaction
-            QueryCriteria.VaultQueryCriteria queryCriteria = new QueryCriteria.VaultQueryCriteria()
-                    .withExternalIds(Arrays.asList(myAccount.getIdentifier().getId())).withStatus(Vault.StateStatus.UNCONSUMED);
+            UUID id = UUID.fromString(linearId);
+            QueryCriteria.LinearStateQueryCriteria queryCriteria = new QueryCriteria.LinearStateQueryCriteria()
+                    .withUuid(Collections.singletonList(id))
+                    .withRelevancyStatus(Vault.RelevancyStatus.RELEVANT).withStatus(Vault.StateStatus.UNCONSUMED);
+
+            System.out.println("queryCriteria: " + queryCriteria);
+            System.out.println("queryCriteria: -->" + getServiceHub().getVaultService().queryBy(TransferState.class, queryCriteria).getStates());
+            System.out.println("");
+            if(getServiceHub().getVaultService().queryBy(TransferState.class, queryCriteria).getStates().size() == 0){
+                throw new FlowException("Not found any states with given linear id and accounts");
+            }
             StateAndRef<TransferState> inputTransferStateAndRef = getServiceHub().getVaultService().queryBy(TransferState.class, queryCriteria).getStates().get(0);
             TransferState inputTransferState = inputTransferStateAndRef.getState().getData();
             System.out.println("inputTransferState ---> "+inputTransferState);
+            if(!inputTransferState.getSenderAccount().equals(sender)){
+                throw new FlowException("The sender account does not match!");
+            }if(!inputTransferState.getReceiverAccount().equals(receiver)){
+                throw new FlowException("The receiver account does not match!");
+            }
             /*List<TransferState> inputTransferStates = inputTransferStateAndRef.stream().map(state -> state.getState().getData())
                     .filter(state -> !state.isReceived() && state.getReceiverAccount().equals(receiver) && state.getSenderAccount().equals(sender)).collect(Collectors.toList());*/
             //change the receiving status
@@ -150,29 +168,31 @@ public class ReceiveFlow {
             final SignedTransaction partSignedTx = getServiceHub().signInitialTransaction(
                     txBuilder, Arrays.asList(getOurIdentity().getOwningKey(), myKey));
 
-            System.out.println("partSignedTx --->" + partSignedTx);
-
             // Stage 4.
             progressTracker.setCurrentStep(GATHERING_SIGS);
             System.out.println("GATHERING_SIGS");
             // Send the state to the counterparty, and receive it back with their signature.
             FlowSession otherPartySession = initiateFlow(targetAccount.getHost());
-            System.out.println("otherPartySession ---> "+otherPartySession);
 
             List<TransactionSignature> accountToMoveToSignature = (List<TransactionSignature>) subFlow(new CollectSignatureFlow(partSignedTx,
                     otherPartySession, targetAcctAnonymousParty.getOwningKey()));
-            /*SignedTransaction signedByCounterParty = subFlow(new CollectSignaturesFlow(partSignedTx,
-                    Arrays.asList(otherPartySession)));*/
-            System.out.println("accountToMoveToSignature ---> "+accountToMoveToSignature.toString());
+
+            System.out.println("--accountToMoveToSignature-- ");
             SignedTransaction signedByCounterParty = partSignedTx.withAdditionalSignatures(accountToMoveToSignature);
-            System.out.println("signedByCounterParty ---> " + signedByCounterParty);
+            System.out.println("--signedByCounterParty-- ");
 
             // Stage 5.
             progressTracker.setCurrentStep(FINALISING_TRANSACTION);
+
+            System.out.println("** is legal: " + getServiceHub().getMyInfo().isLegalIdentity(targetAccount.getHost()));
+
             // Notarise and record the transaction in both parties' vaults.
-            SignedTransaction fullySignedTx = subFlow(new FinalityFlow(signedByCounterParty, Arrays.asList(otherPartySession).stream()
-                    .filter(it -> it.getCounterparty() != getOurIdentity()).collect(Collectors.toList()), StatesToRecord.ALL_VISIBLE));
-            System.out.println("fullySignedTx ---> " + fullySignedTx.toString());
+            List<FlowSession> sessions = !getServiceHub().getMyInfo().isLegalIdentity(targetAccount.getHost())
+                    ? Arrays.asList(otherPartySession).stream().filter(it -> it.getCounterparty() != getOurIdentity()).collect(Collectors.toList())
+                    : Collections.emptyList();
+
+            SignedTransaction fullySignedTx = subFlow(new FinalityFlow(signedByCounterParty, sessions, StatesToRecord.ALL_VISIBLE));
+            System.out.println("\n--fullySignedTx--\n");
             subFlow(new SyncTransfers(outputTransferState.getLinearId().toString(),targetAccount.getHost()));
             System.out.println("\n--Synchronized--\n");
             return fullySignedTx;

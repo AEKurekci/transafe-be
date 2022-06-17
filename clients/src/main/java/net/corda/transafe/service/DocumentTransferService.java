@@ -46,7 +46,7 @@ public class DocumentTransferService implements IDocumentTransferService {
         ReceiveFileResponse response = new ReceiveFileResponse();
 
         SignedTransaction result = proxy.startTrackedFlowDynamic(ReceiveFlow.Initiator.class,
-                senderParty, request.getSender(), request.getReceiver()).getReturnValue().get();
+                senderParty, request.getSender(), request.getReceiver(), request.getLinearId()).getReturnValue().get();
         TransferState output = (TransferState) result.getTx().getOutputs().get(0).getData();
         response.setTransactionId(result.getId().toString());
         response.setFile(output.getFile());

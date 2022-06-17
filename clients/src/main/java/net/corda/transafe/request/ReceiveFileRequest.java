@@ -10,5 +10,6 @@ public class ReceiveFileRequest {
     private String senderHost;
     private String sender;
     private String receiver;
+    private String linearId;
 
 }

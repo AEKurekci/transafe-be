@@ -152,7 +152,7 @@ public class Controller {
         return proxy.vaultQuery(TransferState.class).getStates();
     }
 
-    @GetMapping(value = "getTransfersByLinearId",produces = APPLICATION_JSON_VALUE)
+    @PostMapping(value = "getHistoricDataByLinearId",produces = APPLICATION_JSON_VALUE)
     public List<StateAndRef<TransferState>> getTransfers(@RequestBody GetAllTransfersRequest request) throws ExecutionException, InterruptedException {
         // Filter by state type: IOU.
         List<StateAndRef<TransferState>> auditTrail = proxy.startFlowDynamic(GetAllTransactionsFlow.Initiator.class,
