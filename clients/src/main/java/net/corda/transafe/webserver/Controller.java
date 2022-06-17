@@ -14,10 +14,7 @@ import net.corda.core.transactions.SignedTransaction;
 import net.corda.transafe.accountUtilities.CreateNewAccount;
 import net.corda.transafe.accountUtilities.MyTransfer;
 import net.corda.transafe.flows.GetAllTransactionsFlow;
-import net.corda.transafe.request.DocumentTransferRequest;
-import net.corda.transafe.request.GetAllTransfersRequest;
-import net.corda.transafe.request.HandShakeRequest;
-import net.corda.transafe.request.ReceiveFileRequest;
+import net.corda.transafe.request.*;
 import net.corda.transafe.response.DocumentTransferResponse;
 import net.corda.transafe.response.GetMyTransfersResponse;
 import net.corda.transafe.response.HandShakeResponse;
@@ -26,6 +23,8 @@ import net.corda.transafe.service.AccountManagementService;
 import net.corda.transafe.service.DocumentTransferService;
 import net.corda.transafe.service.IAccountManagementService;
 import net.corda.transafe.states.TransferState;
+import org.apache.commons.collections4.MultiValuedMap;
+import org.apache.commons.collections4.multimap.TransformedMultiValuedMap;
 import org.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.asn1.x500.style.BCStyle;
 import org.slf4j.Logger;
@@ -91,6 +90,7 @@ public class Controller {
         }
     }
 
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
     @GetMapping(value = "/me",produces = APPLICATION_JSON_VALUE)
     private HashMap<String, String> whoami(){
         HashMap<String, String> myMap = new HashMap<>();
@@ -98,6 +98,7 @@ public class Controller {
         return myMap;
     }
 
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
     @PostMapping(value =  "createAccount/{acctName}")
     private ResponseEntity<String> createAccount(@PathVariable String acctName){
         try{
@@ -113,6 +114,7 @@ public class Controller {
         }
     }
 
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
     @PostMapping(value = "handShake", produces = APPLICATION_JSON_VALUE)
     private ResponseEntity<HandShakeResponse> handShake(@RequestBody HandShakeRequest request){
         HandShakeResponse result = null;
@@ -131,6 +133,7 @@ public class Controller {
         }
     }
 
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
     @PostMapping(value = "sendFile", produces = APPLICATION_JSON_VALUE)
     private ResponseEntity<DocumentTransferResponse> sendFile(@RequestBody DocumentTransferRequest request){
         try{
@@ -146,12 +149,14 @@ public class Controller {
         }
     }
 
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
     @GetMapping(value = "getTransfers",produces = APPLICATION_JSON_VALUE)
     public List<StateAndRef<TransferState>> getIOUs() {
         // Filter by state type: IOU.
         return proxy.vaultQuery(TransferState.class).getStates();
     }
 
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
     @PostMapping(value = "getHistoricDataByLinearId",produces = APPLICATION_JSON_VALUE)
     public List<StateAndRef<TransferState>> getTransfers(@RequestBody GetAllTransfersRequest request) throws ExecutionException, InterruptedException {
         // Filter by state type: IOU.
@@ -160,14 +165,14 @@ public class Controller {
         return auditTrail;
     }
 
-    @GetMapping(value = "getMyTransfers/{accountName}", produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<GetMyTransfersResponse> getMyTransfer(@PathVariable String accountName){
-        Set<Party> matchingParties = proxy.partiesFromName(accountName, false);
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
+    @PostMapping(value = "getMyTransfers", produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<GetMyTransfersResponse> getMyTransfer(@RequestBody GetMyTransfersRequest request){
+        logger.info("accountName: {}", request.getAccountName());
         GetMyTransfersResponse response = new GetMyTransfersResponse();
 
         try{
-            Iterator iter = matchingParties.iterator();
-            List<StateAndRef<TransferState>> myTransferStates = proxy.startTrackedFlowDynamic(MyTransfer.class, accountName).getReturnValue().get();
+            List<StateAndRef<TransferState>> myTransferStates = proxy.startTrackedFlowDynamic(MyTransfer.class, request.getAccountName()).getReturnValue().get();
             response.setMyTransfers(myTransferStates);
             return ResponseEntity.ok(response);
         }catch (Exception e){
@@ -178,6 +183,7 @@ public class Controller {
         }
     }
 
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
     @PostMapping(value = "receiveFile", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<ReceiveFileResponse> receiveFile(@RequestBody ReceiveFileRequest request){
         try{
