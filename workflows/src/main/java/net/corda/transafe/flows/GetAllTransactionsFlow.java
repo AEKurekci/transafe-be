@@ -58,30 +58,12 @@ public class GetAllTransactionsFlow {
 
             QueryCriteria.LinearStateQueryCriteria linearStateCriteria = new QueryCriteria.LinearStateQueryCriteria()
                     .withUuid(Collections.singletonList(id)).withStatus(Vault.StateStatus.ALL);
-            System.out.println(linearStateCriteria);
 
             progressTracker.setCurrentStep(APPLYING_CRITERIA);
-            // By default Corda returns the results in pages of 200 records,
-            // you can modify that default size; and you must loop through the pages
-            // to get all of the results.
             Vault.Page<TransferState> results = getServiceHub().getVaultService()
                     .queryBy(TransferState.class, linearStateCriteria);
 
-            results.getStates().forEach(state -> System.out.println(state.getState().getData()));
-            // This is a simplified version where I get the first record in the result set;
-            // again, you must loop through all the pages if you have more than 200 records
-            // (it's highly unlikely that your state was updated more than 200 times though).
-            SecureHash txHash = results.getStates().get(0).getRef().getTxhash();
-            System.out.println("txHash: " + txHash);
-
-            //todo gerekli imzalar toplanmalı
             progressTracker.setCurrentStep(FINALISING_TRANSACTION);
-            // Now you have the transaction that created your state
-            // (i.e. the transaction that consumed a previous version of your state
-            //  and created the new version of your state).
-            SignedTransaction tx = getServiceHub().getValidatedTransactions()
-                    .getTransaction(txHash);
-            subFlow(new FinalityFlow(tx, Collections.emptyList(), StatesToRecord.ALL_VISIBLE));
             return results.getStates();
         }
     }
