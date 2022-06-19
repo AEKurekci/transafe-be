@@ -1,12 +1,9 @@
 package net.corda.transafe.flows;
 
 import net.corda.core.contracts.StateAndRef;
-import net.corda.core.crypto.SecureHash;
 import net.corda.core.flows.*;
-import net.corda.core.node.StatesToRecord;
 import net.corda.core.node.services.Vault;
 import net.corda.core.node.services.vault.QueryCriteria;
-import net.corda.core.transactions.SignedTransaction;
 import net.corda.core.utilities.ProgressTracker;
 import net.corda.transafe.states.TransferState;
 

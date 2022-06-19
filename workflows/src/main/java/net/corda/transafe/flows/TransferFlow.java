@@ -24,6 +24,7 @@ import net.corda.transafe.contracts.TransferContract;
 import net.corda.transafe.states.TransferState;
 
 import java.security.PublicKey;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
@@ -49,11 +50,13 @@ public class TransferFlow {
     public static class Initiator extends FlowLogic<SignedTransaction> {
 
         private final String file;
+        private final String title;
+        private final String senderHost;
         private final Party otherParty;
         private final String sender;
         private final String receiver;
-        private final Date startDate;
-        private final Date endDate;
+        private final LocalDateTime startDate;
+        private final LocalDateTime endDate;
 
         private final Step GENERATING_TRANSACTION = new Step("Generating transaction based on new IOU.");
         private final Step VERIFYING_TRANSACTION = new Step("Verifying contract constraints.");
@@ -82,8 +85,10 @@ public class TransferFlow {
                 FINALISING_TRANSACTION
         );
 
-        public Initiator(String file, Party otherParty, String sender, String receiver, Date startDate, Date endDate) {
+        public Initiator(String file, String title, String senderHost, Party otherParty, String sender, String receiver, LocalDateTime startDate, LocalDateTime endDate) {
             this.file = file;
+            this.title = title;
+            this.senderHost = senderHost;
             this.otherParty = otherParty;
             this.sender = sender;
             this.receiver = receiver;
@@ -122,7 +127,7 @@ public class TransferFlow {
                     .collect(Collectors.toList()).get(0).getState().getData();
             AnonymousParty targetAcctAnonymousParty = subFlow(new RequestKeyForAccount(targetAccount));
             // Generate an unsigned transaction.
-            TransferState transferState = new TransferState(file, new AnonymousParty(myKey), sender, targetAcctAnonymousParty, receiver, startDate, endDate, new UniqueIdentifier(), false);
+            TransferState transferState = new TransferState(file, title, senderHost, new AnonymousParty(myKey), sender, targetAcctAnonymousParty, receiver, startDate, endDate, new UniqueIdentifier(), false);
             final Command<TransferContract.Commands.SendFile> txCommand = new Command<>(
                     new TransferContract.Commands.SendFile(),
                     Arrays.asList(myKey, targetAcctAnonymousParty.getOwningKey()));

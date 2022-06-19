@@ -15,13 +15,11 @@ import net.corda.transafe.accountUtilities.CreateNewAccount;
 import net.corda.transafe.accountUtilities.MyTransfer;
 import net.corda.transafe.flows.GetAllTransactionsFlow;
 import net.corda.transafe.request.*;
-import net.corda.transafe.response.DocumentTransferResponse;
-import net.corda.transafe.response.GetMyTransfersResponse;
-import net.corda.transafe.response.HandShakeResponse;
-import net.corda.transafe.response.ReceiveFileResponse;
+import net.corda.transafe.response.*;
 import net.corda.transafe.service.AccountManagementService;
 import net.corda.transafe.service.DocumentTransferService;
 import net.corda.transafe.service.IAccountManagementService;
+import net.corda.transafe.service.IDocumentTransferService;
 import net.corda.transafe.states.TransferState;
 import org.apache.commons.collections4.MultiValuedMap;
 import org.apache.commons.collections4.multimap.TransformedMultiValuedMap;
@@ -53,7 +51,7 @@ public class Controller {
     private static final Logger logger = LoggerFactory.getLogger(RestController.class);
     private final CordaRPCOps proxy;
     private final CordaX500Name me;
-    private final DocumentTransferService documentTransferService;
+    private final IDocumentTransferService documentTransferService;
     private final IAccountManagementService accountManagementService;
 
     public Controller(NodeRPCConnection rpc) {
@@ -137,7 +135,7 @@ public class Controller {
     @PostMapping(value = "sendFile", produces = APPLICATION_JSON_VALUE)
     private ResponseEntity<DocumentTransferResponse> sendFile(@RequestBody DocumentTransferRequest request){
         try{
-            DocumentTransferResponse responseBody = documentTransferService.sendFile(request);
+            DocumentTransferResponse responseBody = documentTransferService.sendFile(request, me);
             return ResponseEntity.ok(responseBody);
         }catch (Exception e){
             DocumentTransferResponse response = new DocumentTransferResponse();
@@ -168,7 +166,6 @@ public class Controller {
     @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
     @PostMapping(value = "getMyTransfers", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<GetMyTransfersResponse> getMyTransfer(@RequestBody GetMyTransfersRequest request){
-        logger.info("accountName: {}", request.getAccountName());
         GetMyTransfersResponse response = new GetMyTransfersResponse();
 
         try{
@@ -193,6 +190,18 @@ public class Controller {
             ReceiveFileResponse response = new ReceiveFileResponse();
             response.setError(e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
+    }
+
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
+    @GetMapping(value = "receiveAllAccounts")
+    public ResponseEntity<ReceiveAllAccountsResponse> receiveAllAccounts(){
+        try{
+            return ResponseEntity.ok(accountManagementService.receiveAllAccounts());
+        } catch (Exception e) {
+            ReceiveAllAccountsResponse response = new ReceiveAllAccountsResponse();
+            response.setError(e.getMessage());
+            return ResponseEntity.badRequest().body(response);
         }
     }
 }

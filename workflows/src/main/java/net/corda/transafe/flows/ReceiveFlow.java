@@ -108,33 +108,24 @@ public class ReceiveFlow {
             AccountInfo myAccount = accountService.accountInfo(receiver).stream()
                     .filter(account -> account.getState().getData().getHost().equals(getOurIdentity()))
                     .collect(Collectors.toList()).get(0).getState().getData();
-            System.out.println("myAccount ---> "+myAccount);
             PublicKey myKey = subFlow(new NewKeyForAccount(myAccount.getIdentifier().getId())).getOwningKey();
-            System.out.println("myKey ---> "+myKey);
 
             AccountInfo targetAccount = accountService.accountInfo(sender).stream()
                     .filter(account -> account.getState().getData().getHost().equals(fromParty))
                     .collect(Collectors.toList()).get(0).getState().getData();
 
-            System.out.println("targetAccount ---> "+targetAccount);
             AnonymousParty targetAcctAnonymousParty = subFlow(new RequestKeyForAccount(targetAccount));
-            System.out.println("targetAcctAnonymousParty ---> "+targetAcctAnonymousParty.toString());
 
             // Retrieve the transaction
             UUID id = UUID.fromString(linearId);
             QueryCriteria.LinearStateQueryCriteria queryCriteria = new QueryCriteria.LinearStateQueryCriteria()
                     .withUuid(Collections.singletonList(id))
                     .withRelevancyStatus(Vault.RelevancyStatus.RELEVANT).withStatus(Vault.StateStatus.UNCONSUMED);
-
-            System.out.println("queryCriteria: " + queryCriteria);
-            System.out.println("queryCriteria: -->" + getServiceHub().getVaultService().queryBy(TransferState.class, queryCriteria).getStates());
-            System.out.println("");
             if(getServiceHub().getVaultService().queryBy(TransferState.class, queryCriteria).getStates().size() == 0){
                 throw new FlowException("Not found any states with given linear id and accounts");
             }
             StateAndRef<TransferState> inputTransferStateAndRef = getServiceHub().getVaultService().queryBy(TransferState.class, queryCriteria).getStates().get(0);
             TransferState inputTransferState = inputTransferStateAndRef.getState().getData();
-            System.out.println("inputTransferState ---> "+inputTransferState);
             if(!inputTransferState.getSenderAccount().equals(sender)){
                 throw new FlowException("The sender account does not match!");
             }if(!inputTransferState.getReceiverAccount().equals(receiver)){
@@ -183,8 +174,6 @@ public class ReceiveFlow {
 
             // Stage 5.
             progressTracker.setCurrentStep(FINALISING_TRANSACTION);
-
-            System.out.println("** is legal: " + getServiceHub().getMyInfo().isLegalIdentity(targetAccount.getHost()));
 
             // Notarise and record the transaction in both parties' vaults.
             List<FlowSession> sessions = !getServiceHub().getMyInfo().isLegalIdentity(targetAccount.getHost())

@@ -9,6 +9,7 @@ public class ReceiveFileResponse {
 
     private String file;
     private String error;
+    private String title;
     private String transactionId;
 
 }
