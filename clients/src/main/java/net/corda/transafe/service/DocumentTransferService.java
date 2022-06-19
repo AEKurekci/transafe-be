@@ -23,14 +23,15 @@ public class DocumentTransferService implements IDocumentTransferService {
     private final CordaRPCOps proxy;
 
     @Override
-    public DocumentTransferResponse sendFile(DocumentTransferRequest request) throws ExecutionException, InterruptedException {
+    public DocumentTransferResponse sendFile(DocumentTransferRequest request, CordaX500Name fromWho) throws ExecutionException, InterruptedException {
         CordaX500Name receiver500Name = CordaX500Name.parse(request.getReceiverHost());
         Party receiver = proxy.wellKnownPartyFromX500Name(receiver500Name);
 
         DocumentTransferResponse response = new DocumentTransferResponse();
 
         SignedTransaction result = proxy.startTrackedFlowDynamic(TransferFlow.Initiator.class,
-                request.getFile(), receiver, request.getSender(), request.getReceiver(), request.getStartDate(), request.getEndDate())
+                request.getFile(), request.getTitle(), fromWho.toString(), receiver, request.getSender(),
+                        request.getReceiver(), request.getStartDate(), request.getEndDate())
                 .getReturnValue().get();
 
         response.setTransactionId(result.getId().toString());
@@ -50,6 +51,7 @@ public class DocumentTransferService implements IDocumentTransferService {
         TransferState output = (TransferState) result.getTx().getOutputs().get(0).getData();
         response.setTransactionId(result.getId().toString());
         response.setFile(output.getFile());
+        response.setTitle(output.getTitle());
 
         return response;
     }
