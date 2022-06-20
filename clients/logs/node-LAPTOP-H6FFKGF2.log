@@ -78,3 +78,166 @@
 [INFO ] 2022-06-20T11:38:57,075 [http-nio-8090-exec-2] [/] - Initializing Spring FrameworkServlet 'dispatcherServlet'
 [INFO ] 2022-06-20T11:38:57,076 [http-nio-8090-exec-2] DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization started
 [INFO ] 2022-06-20T11:38:57,108 [http-nio-8090-exec-2] DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization completed in 32 ms
+[INFO ] 2022-06-20T17:49:09,803 [main] Starter - Starting Starter on LAPTOP-H6FFKGF2 with PID 4964 (C:\Users\AliKurekci\Desktop\ali\transafe-be\clients\build\classes\java\main started by AliKurekci in C:\Users\AliKurekci\Desktop\ali\transafe-be\clients)
+[INFO ] 2022-06-20T17:49:09,812 [main] Starter - No active profile set, falling back to default profiles: default
+[INFO ] 2022-06-20T17:49:09,984 [main] AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@f2c488: startup date [Mon Jun 20 20:49:09 EET 2022]; root of context hierarchy
+[INFO ] 2022-06-20T17:49:13,940 [main] TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2022-06-20T17:49:13,978 [main] Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-06-20T17:49:13,996 [main] StandardService - Starting service [Tomcat]
+[INFO ] 2022-06-20T17:49:13,996 [main] StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.31
+[INFO ] 2022-06-20T17:49:14,012 [localhost-startStop-1] AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_333\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Python310\Scripts\;C:\Python310\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X64\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X86\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk1.8.0_333\bin;C:\Users\AliKurekci\AppData\Local\Microsoft\WindowsApps;C:\Users\AliKurekci\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\PyCharm 2021.3.2\bin;;C:\Users\AliKurekci\AppData\Roaming\npm;C:\Program Files\Java\jdk1.8.0_333\bin;;.]
+[INFO ] 2022-06-20T17:49:14,378 [localhost-startStop-1] [/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2022-06-20T17:49:14,378 [localhost-startStop-1] ContextLoader - Root WebApplicationContext: initialization completed in 4404 ms
+[INFO ] 2022-06-20T17:49:14,679 [localhost-startStop-1] ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+[INFO ] 2022-06-20T17:49:14,696 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+[INFO ] 2022-06-20T17:49:14,696 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+[INFO ] 2022-06-20T17:49:14,696 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+[INFO ] 2022-06-20T17:49:14,696 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+[INFO ] 2022-06-20T17:49:25,995 [main] RPCClient - Failed Startup took 4038 msec
+[WARN ] 2022-06-20T17:49:25,995 [main] AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'controller' defined in file [C:\Users\AliKurekci\Desktop\ali\transafe-be\clients\build\classes\java\main\net\corda\transafe\webserver\Controller.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'nodeRPCConnection': Invocation of init method failed; nested exception is net.corda.client.rpc.RPCException: Cannot connect to server(s). Tried with all available servers.
+[INFO ] 2022-06-20T17:49:26,015 [main] StandardService - Stopping service [Tomcat]
+[INFO ] 2022-06-20T17:49:26,048 [main] ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[ERROR] 2022-06-20T17:49:26,062 [main] SpringApplication - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'controller' defined in file [C:\Users\AliKurekci\Desktop\ali\transafe-be\clients\build\classes\java\main\net\corda\transafe\webserver\Controller.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'nodeRPCConnection': Invocation of init method failed; nested exception is net.corda.client.rpc.RPCException: Cannot connect to server(s). Tried with all available servers.
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:733) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:198) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1266) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1123) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:754) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:881) ~[spring-context-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551) ~[spring-context-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140) ~[spring-boot-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759) [spring-boot-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:395) [spring-boot-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:327) [spring-boot-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at net.corda.transafe.webserver.Starter.main(Starter.java:21) [main/:?]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'nodeRPCConnection': Invocation of init method failed; nested exception is net.corda.client.rpc.RPCException: Cannot connect to server(s). Tried with all available servers.
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:139) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:416) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1686) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:573) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1130) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1057) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:819) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:725) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	... 17 more
+Caused by: net.corda.client.rpc.RPCException: Cannot connect to server(s). Tried with all available servers.
+	at net.corda.client.rpc.internal.RPCClientProxyHandler.start(RPCClientProxyHandler.kt:285) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.internal.RPCClient$start$1.invoke(RPCClient.kt:106) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.internal.RPCClient$start$1.invoke(RPCClient.kt:36) ~[corda-rpc-4.9.jar:?]
+	at net.corda.core.internal.InternalUtils.logElapsedTime(InternalUtils.kt:228) ~[corda-core-4.9.jar:?]
+	at net.corda.core.internal.InternalUtils.logElapsedTime(InternalUtils.kt:218) ~[corda-core-4.9.jar:?]
+	at net.corda.client.rpc.internal.RPCClient.start(RPCClient.kt:81) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.CordaRPCClient.start(CordaRPCClient.kt:587) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.CordaRPCClient.start(CordaRPCClient.kt:542) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.CordaRPCClient.start(CordaRPCClient.kt:496) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.CordaRPCClient.start$default(CordaRPCClient.kt:494) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.CordaRPCClient.start(CordaRPCClient.kt) ~[corda-rpc-4.9.jar:?]
+	at net.corda.transafe.webserver.NodeRPCConnection.initialiseNodeRPCConnection(NodeRPCConnection.java:40) ~[main/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_333]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_333]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_333]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_333]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:366) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:309) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:136) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:416) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1686) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:573) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1130) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1057) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:819) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:725) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	... 17 more
+Caused by: org.apache.activemq.artemis.api.core.ActiveMQNotConnectedException: AMQ219007: Cannot connect to server(s). Tried with all available servers.
+	at org.apache.activemq.artemis.core.client.impl.ServerLocatorImpl.createSessionFactory(ServerLocatorImpl.java:708) ~[artemis-core-client-2.19.1.jar:2.19.1]
+	at net.corda.client.rpc.internal.RPCClientProxyHandler.start(RPCClientProxyHandler.kt:283) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.internal.RPCClient$start$1.invoke(RPCClient.kt:106) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.internal.RPCClient$start$1.invoke(RPCClient.kt:36) ~[corda-rpc-4.9.jar:?]
+	at net.corda.core.internal.InternalUtils.logElapsedTime(InternalUtils.kt:228) ~[corda-core-4.9.jar:?]
+	at net.corda.core.internal.InternalUtils.logElapsedTime(InternalUtils.kt:218) ~[corda-core-4.9.jar:?]
+	at net.corda.client.rpc.internal.RPCClient.start(RPCClient.kt:81) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.CordaRPCClient.start(CordaRPCClient.kt:587) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.CordaRPCClient.start(CordaRPCClient.kt:542) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.CordaRPCClient.start(CordaRPCClient.kt:496) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.CordaRPCClient.start$default(CordaRPCClient.kt:494) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.CordaRPCClient.start(CordaRPCClient.kt) ~[corda-rpc-4.9.jar:?]
+	at net.corda.transafe.webserver.NodeRPCConnection.initialiseNodeRPCConnection(NodeRPCConnection.java:40) ~[main/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_333]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_333]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_333]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_333]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:366) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:309) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:136) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:416) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1686) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:573) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1130) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1057) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:819) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:725) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	... 17 more
+[INFO ] 2022-06-20T17:53:37,732 [main] Starter - Starting Starter on LAPTOP-H6FFKGF2 with PID 14260 (C:\Users\AliKurekci\Desktop\ali\transafe-be\clients\build\classes\java\main started by AliKurekci in C:\Users\AliKurekci\Desktop\ali\transafe-be\clients)
+[INFO ] 2022-06-20T17:53:37,739 [main] Starter - No active profile set, falling back to default profiles: default
+[INFO ] 2022-06-20T17:53:37,810 [main] AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@794b435f: startup date [Mon Jun 20 20:53:37 EET 2022]; root of context hierarchy
+[INFO ] 2022-06-20T17:53:39,994 [main] TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2022-06-20T17:53:40,025 [main] Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-06-20T17:53:40,062 [main] StandardService - Starting service [Tomcat]
+[INFO ] 2022-06-20T17:53:40,063 [main] StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.31
+[INFO ] 2022-06-20T17:53:40,075 [localhost-startStop-1] AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_333\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Python310\Scripts\;C:\Python310\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X64\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X86\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk1.8.0_333\bin;C:\Users\AliKurekci\AppData\Local\Microsoft\WindowsApps;C:\Users\AliKurekci\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\PyCharm 2021.3.2\bin;;C:\Users\AliKurekci\AppData\Roaming\npm;C:\Program Files\Java\jdk1.8.0_333\bin;;.]
+[INFO ] 2022-06-20T17:53:40,443 [localhost-startStop-1] [/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2022-06-20T17:53:40,443 [localhost-startStop-1] ContextLoader - Root WebApplicationContext: initialization completed in 2638 ms
+[INFO ] 2022-06-20T17:53:40,914 [localhost-startStop-1] ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+[INFO ] 2022-06-20T17:53:40,931 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+[INFO ] 2022-06-20T17:53:40,932 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+[INFO ] 2022-06-20T17:53:40,932 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+[INFO ] 2022-06-20T17:53:40,934 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+[INFO ] 2022-06-20T17:53:51,850 [main] RPCClient - Startup took 2833 msec
+[INFO ] 2022-06-20T17:53:53,042 [main] SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[INFO ] 2022-06-20T17:53:53,325 [main] RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@794b435f: startup date [Mon Jun 20 20:53:37 EET 2022]; root of context hierarchy
+[INFO ] 2022-06-20T17:53:53,442 [main] RequestMappingHandlerMapping - Mapped "{[/me],methods=[GET],produces=[application/json]}" onto private java.util.HashMap<java.lang.String, java.lang.String> net.corda.transafe.webserver.Controller.whoami()
+[INFO ] 2022-06-20T17:53:53,442 [main] RequestMappingHandlerMapping - Mapped "{[/getMyTransfers],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.GetMyTransfersResponse> net.corda.transafe.webserver.Controller.getMyTransfer(net.corda.transafe.request.GetMyTransfersRequest)
+[INFO ] 2022-06-20T17:53:53,442 [main] RequestMappingHandlerMapping - Mapped "{[/handShake],methods=[POST],produces=[application/json]}" onto private org.springframework.http.ResponseEntity<net.corda.transafe.response.HandShakeResponse> net.corda.transafe.webserver.Controller.handShake(net.corda.transafe.request.HandShakeRequest)
+[INFO ] 2022-06-20T17:53:53,442 [main] RequestMappingHandlerMapping - Mapped "{[/createAccount/{acctName}],methods=[POST]}" onto private org.springframework.http.ResponseEntity<java.lang.String> net.corda.transafe.webserver.Controller.createAccount(java.lang.String)
+[INFO ] 2022-06-20T17:53:53,458 [main] RequestMappingHandlerMapping - Mapped "{[/getTransfers],methods=[GET],produces=[application/json]}" onto public java.util.List<net.corda.core.contracts.StateAndRef<net.corda.transafe.states.TransferState>> net.corda.transafe.webserver.Controller.getIOUs()
+[INFO ] 2022-06-20T17:53:53,458 [main] RequestMappingHandlerMapping - Mapped "{[/getHistoricDataByLinearId],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.GetAllTransfersResponse> net.corda.transafe.webserver.Controller.getTransfers(net.corda.transafe.request.GetAllTransfersRequest)
+[INFO ] 2022-06-20T17:53:53,458 [main] RequestMappingHandlerMapping - Mapped "{[/receiveFile],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.ReceiveFileResponse> net.corda.transafe.webserver.Controller.receiveFile(net.corda.transafe.request.ReceiveFileRequest)
+[INFO ] 2022-06-20T17:53:53,458 [main] RequestMappingHandlerMapping - Mapped "{[/sendFile],methods=[POST],produces=[application/json]}" onto private org.springframework.http.ResponseEntity<net.corda.transafe.response.DocumentTransferResponse> net.corda.transafe.webserver.Controller.sendFile(net.corda.transafe.request.DocumentTransferRequest)
+[INFO ] 2022-06-20T17:53:53,458 [main] RequestMappingHandlerMapping - Mapped "{[/receiveAllAccounts],methods=[GET]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.ReceiveAllAccountsResponse> net.corda.transafe.webserver.Controller.receiveAllAccounts()
+[INFO ] 2022-06-20T17:53:53,458 [main] RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+[INFO ] 2022-06-20T17:53:53,458 [main] RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+[INFO ] 2022-06-20T17:53:53,512 [main] SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[INFO ] 2022-06-20T17:53:53,512 [main] SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[INFO ] 2022-06-20T17:53:53,621 [main] WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+[INFO ] 2022-06-20T17:53:54,010 [main] AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+[INFO ] 2022-06-20T17:53:54,044 [main] Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-06-20T17:53:54,044 [main] NioSelectorPool - Using a shared selector for servlet write/read
+[INFO ] 2022-06-20T17:53:54,096 [main] TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2022-06-20T17:53:54,102 [main] Starter - Started Starter in 17.461 seconds (JVM running for 18.941)
