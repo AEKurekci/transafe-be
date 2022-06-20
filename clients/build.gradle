@@ -9,7 +9,6 @@ sourceSets {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'junit:junit:4.13.1'
     implementation 'org.springframework.restdocs:spring-restdocs-mockmvc:2.0.6.RELEASE'
 
