@@ -156,11 +156,19 @@ public class Controller {
 
     @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
     @PostMapping(value = "getHistoricDataByLinearId",produces = APPLICATION_JSON_VALUE)
-    public List<StateAndRef<TransferState>> getTransfers(@RequestBody GetAllTransfersRequest request) throws ExecutionException, InterruptedException {
-        // Filter by state type: IOU.
-        List<StateAndRef<TransferState>> auditTrail = proxy.startFlowDynamic(GetAllTransactionsFlow.Initiator.class,
-                request.getLinearId()).getReturnValue().get();
-        return auditTrail;
+    public ResponseEntity<GetAllTransfersResponse> getTransfers(@RequestBody GetAllTransfersRequest request) {
+        GetAllTransfersResponse response = new GetAllTransfersResponse();
+        try{
+            List<StateAndRef<TransferState>> auditTrail = proxy.startFlowDynamic(GetAllTransactionsFlow.Initiator.class,
+                    request.getLinearId()).getReturnValue().get();
+            response.setTransferHistory(auditTrail);
+            response.setSuccess(true);
+            return ResponseEntity.ok(response);
+        }catch (Exception e){
+            response.setSuccess(false);
+            response.setError(e.getMessage());
+            return ResponseEntity.badRequest().body(response);
+        }
     }
 
     @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})

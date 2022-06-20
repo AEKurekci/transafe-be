@@ -8,7 +8,6 @@ import net.corda.core.transactions.LedgerTransaction;
 import net.corda.transafe.states.TransferState;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 import static net.corda.core.contracts.ContractsDSL.requireSingleCommand;
@@ -50,6 +49,7 @@ public class TransferContract implements Contract {
                 TransferState input = (TransferState) inputs.get(0);
                 require.using("Expire check: Input Start date should occurs before now date", input.getStartDate().compareTo(LocalDateTime.now()) <= 0);
                 require.using("Expire check: End date should occurs after now date.", input.getEndDate().compareTo(LocalDateTime.now()) >= 0);
+                require.using("The input and output file should not be changed.", input.getFile().equals(output.getFile()));
                 require.using("The input should not be received before.", !input.isReceived());
                 require.using("The output receive status should be changed.", output.isReceived());
                 return null;
