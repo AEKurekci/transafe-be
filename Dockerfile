@@ -1,6 +1,6 @@
 FROM openjdk:8-jre-alpine
 RUN apk update && apk add bash
 WORKDIR /app
-COPY /jar/transafe-be.jar /app
+COPY /lib/quasar.jar /app
 EXPOSE 8085
-CMD ["java", "-jar", "transafe-be.jar"]
+CMD ["java", "-jar", "quasar.jar"]
