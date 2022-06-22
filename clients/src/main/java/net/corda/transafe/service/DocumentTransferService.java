@@ -1,6 +1,7 @@
 package net.corda.transafe.service;
 
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import net.corda.core.identity.CordaX500Name;
 import net.corda.core.identity.Party;
 import net.corda.core.messaging.CordaRPCOps;
@@ -17,10 +18,11 @@ import org.springframework.stereotype.Service;
 import java.util.concurrent.ExecutionException;
 
 @Service
-@RequiredArgsConstructor
+@NoArgsConstructor
+@Setter
 public class DocumentTransferService implements IDocumentTransferService {
 
-    private final CordaRPCOps proxy;
+    private CordaRPCOps proxy;
 
     @Override
     public DocumentTransferResponse sendFile(DocumentTransferRequest request, CordaX500Name fromWho) throws ExecutionException, InterruptedException {
