@@ -8,11 +8,11 @@ COPY build/nodes/Node1/persistence.mv.db /app
 COPY build/nodes/Node1/persistence.trace.db /app
 COPY build/nodes/Node1/process-id /app
 COPY build/nodes/Node1/network-parameters /app
-COPY build/nodes/Node1/cordapps/config/accounts-contracts-1.0.jar /app
-COPY build/nodes/Node1/cordapps/config/accounts-workflows-1.0.jar /app
-COPY build/nodes/Node1/cordapps/config/ci-workflows-1.0.jar /app
-COPY build/nodes/Node1/cordapps/config/contracts.jar /app
-COPY build/nodes/Node1/cordapps/config/workflows.jar /app
+COPY build/nodes/Node1/cordapps/accounts-contracts-1.0.jar /app
+COPY build/nodes/Node1/cordapps/accounts-workflows-1.0.jar /app
+COPY build/nodes/Node1/cordapps/ci-workflows-1.0.jar /app
+COPY build/nodes/Node1/cordapps/contracts.jar /app
+COPY build/nodes/Node1/cordapps/workflows.jar /app
 
 EXPOSE 8085 8081 80 8090
 
