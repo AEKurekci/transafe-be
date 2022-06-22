@@ -108,7 +108,7 @@ dependencies {
     cordapp "$accounts_release_group:accounts-workflows:$accounts_release_version"
 }
 
-task deployNodes(type: net.corda.plugins.Cordform, dependsOn: ['jar']) {
+task deployNodes(type: net.corda.plugins.Dockerform, dependsOn: ['jar']) {
     nodeDefaults {
         projectCordapp {
             deploy = false
