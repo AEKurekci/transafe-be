@@ -5,13 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import net.corda.client.jackson.JacksonSupport;
 import net.corda.core.contracts.StateAndRef;
 import net.corda.core.identity.CordaX500Name;
-import net.corda.core.identity.Party;
 import net.corda.core.messaging.CordaRPCOps;
-import net.corda.core.node.NodeInfo;
-import net.corda.core.node.services.Vault;
-import net.corda.core.node.services.vault.QueryCriteria;
-import net.corda.core.transactions.SignedTransaction;
-import net.corda.transafe.accountUtilities.CreateNewAccount;
 import net.corda.transafe.accountUtilities.MyTransfer;
 import net.corda.transafe.flows.GetAllTransactionsFlow;
 import net.corda.transafe.request.*;
@@ -21,10 +15,6 @@ import net.corda.transafe.service.DocumentTransferService;
 import net.corda.transafe.service.IAccountManagementService;
 import net.corda.transafe.service.IDocumentTransferService;
 import net.corda.transafe.states.TransferState;
-import org.apache.commons.collections4.MultiValuedMap;
-import org.apache.commons.collections4.multimap.TransformedMultiValuedMap;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x500.style.BCStyle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -34,11 +24,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
-import java.util.concurrent.ExecutionException;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -48,36 +35,19 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RestController
 @RequestMapping("/") // The paths for HTTP requests are relative to this base path.
 public class Controller {
-    private static final Logger logger = LoggerFactory.getLogger(RestController.class);
+    private static final Logger logger = LoggerFactory.getLogger(Controller.class);
     private final CordaRPCOps proxy;
     private final CordaX500Name me;
     private final IDocumentTransferService documentTransferService;
     private final IAccountManagementService accountManagementService;
 
-    public Controller(NodeRPCConnection rpc) {
+    public Controller(NodeRPCConnection rpc, DocumentTransferService documentTransferService, AccountManagementService accountManagementService) {
         this.proxy = rpc.proxy;
         this.me = proxy.nodeInfo().getLegalIdentities().get(0).getName();
-        documentTransferService = new DocumentTransferService(this.proxy);
-        accountManagementService = new AccountManagementService(this.proxy);
-    }
-
-    /** Helpers for filtering the network map cache. */
-    public String toDisplayString(X500Name name){
-        return BCStyle.INSTANCE.toString(name);
-    }
-
-    private boolean isNotary(NodeInfo nodeInfo) {
-        return !proxy.notaryIdentities()
-                .stream().filter(el -> nodeInfo.isLegalIdentity(el))
-                .collect(Collectors.toList()).isEmpty();
-    }
-
-    private boolean isMe(NodeInfo nodeInfo){
-        return nodeInfo.getLegalIdentities().get(0).getName().equals(me);
-    }
-
-    private boolean isNetworkMap(NodeInfo nodeInfo){
-        return nodeInfo.getLegalIdentities().get(0).getName().getOrganisation().equals("Network Map Service");
+        documentTransferService.setProxy(this.proxy);
+        this.documentTransferService = documentTransferService;
+        accountManagementService.setProxy(this.proxy);
+        this.accountManagementService = accountManagementService;
     }
 
     @Configuration
@@ -90,7 +60,7 @@ public class Controller {
 
     @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
     @GetMapping(value = "/me",produces = APPLICATION_JSON_VALUE)
-    private HashMap<String, String> whoami(){
+    public Map<String, String> whoAmI(){
         HashMap<String, String> myMap = new HashMap<>();
         myMap.put("me", me.toString());
         return myMap;
@@ -98,12 +68,12 @@ public class Controller {
 
     @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
     @PostMapping(value =  "createAccount/{acctName}")
-    private ResponseEntity<String> createAccount(@PathVariable String acctName){
+    public ResponseEntity<String> createAccount(@PathVariable String acctName){
         try{
-            String result = proxy.startTrackedFlowDynamic(CreateNewAccount.class,acctName)
-                    .getReturnValue()
-                    .get();
-            return ResponseEntity.status(HttpStatus.CREATED).body("Account "+acctName+" Created");
+            logger.info("Calling createAccount operation");
+            String response = accountManagementService.createAccount(acctName);
+            logger.info("Called createAccount operation");
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
 
         }catch (Exception e) {
                 return ResponseEntity
@@ -114,10 +84,12 @@ public class Controller {
 
     @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
     @PostMapping(value = "handShake", produces = APPLICATION_JSON_VALUE)
-    private ResponseEntity<HandShakeResponse> handShake(@RequestBody HandShakeRequest request){
+    public ResponseEntity<HandShakeResponse> handShake(@RequestBody HandShakeRequest request){
         HandShakeResponse result = null;
         try{
+            logger.info("Calling handShake operation");
             result = accountManagementService.handShake(request);
+            logger.info("Called handShake operation");
             return ResponseEntity.status(HttpStatus.OK).body(result);
 
         }catch (Exception e) {
@@ -133,9 +105,11 @@ public class Controller {
 
     @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
     @PostMapping(value = "sendFile", produces = APPLICATION_JSON_VALUE)
-    private ResponseEntity<DocumentTransferResponse> sendFile(@RequestBody DocumentTransferRequest request){
+    public ResponseEntity<DocumentTransferResponse> sendFile(@RequestBody DocumentTransferRequest request){
         try{
+            logger.info("Calling sendFile operation");
             DocumentTransferResponse responseBody = documentTransferService.sendFile(request, me);
+            logger.info("Called sendFile operation");
             return ResponseEntity.ok(responseBody);
         }catch (Exception e){
             DocumentTransferResponse response = new DocumentTransferResponse();
@@ -156,13 +130,15 @@ public class Controller {
 
     @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
     @PostMapping(value = "getHistoricDataByLinearId",produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<GetAllTransfersResponse> getTransfers(@RequestBody GetAllTransfersRequest request) {
+    public ResponseEntity<GetAllTransfersResponse> getHistoricDataByLinearId(@RequestBody GetAllTransfersRequest request) {
         GetAllTransfersResponse response = new GetAllTransfersResponse();
         try{
+            logger.info("Calling GetAllTransactionsFlow flow");
             List<StateAndRef<TransferState>> auditTrail = proxy.startFlowDynamic(GetAllTransactionsFlow.Initiator.class,
                     request.getLinearId()).getReturnValue().get();
             response.setTransferHistory(auditTrail);
             response.setSuccess(true);
+            logger.info("Called GetAllTransactionsFlow flow");
             return ResponseEntity.ok(response);
         }catch (Exception e){
             response.setSuccess(false);
@@ -177,8 +153,10 @@ public class Controller {
         GetMyTransfersResponse response = new GetMyTransfersResponse();
 
         try{
+            logger.info("Calling MyTransfer flow");
             List<StateAndRef<TransferState>> myTransferStates = proxy.startTrackedFlowDynamic(MyTransfer.class, request.getAccountName()).getReturnValue().get();
             response.setMyTransfers(myTransferStates);
+            logger.info("Called MyTransfer flow");
             return ResponseEntity.ok(response);
         }catch (Exception e){
             response.setError(e.getMessage());
@@ -192,7 +170,9 @@ public class Controller {
     @PostMapping(value = "receiveFile", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<ReceiveFileResponse> receiveFile(@RequestBody ReceiveFileRequest request){
         try{
+            logger.info("Calling receiveFile operation");
             ReceiveFileResponse response = documentTransferService.receiveFile(request);
+            logger.info("Called receiveFile operation");
             return ResponseEntity.ok(response);
         }catch (Exception e){
             ReceiveFileResponse response = new ReceiveFileResponse();
@@ -205,6 +185,7 @@ public class Controller {
     @GetMapping(value = "receiveAllAccounts")
     public ResponseEntity<ReceiveAllAccountsResponse> receiveAllAccounts(){
         try{
+            logger.info("Calling receiveAllAccounts operation");
             return ResponseEntity.ok(accountManagementService.receiveAllAccounts());
         } catch (Exception e) {
             ReceiveAllAccountsResponse response = new ReceiveAllAccountsResponse();
