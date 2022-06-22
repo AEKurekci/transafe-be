@@ -1,11 +1,12 @@
 package net.corda.transafe.service;
 
 import com.r3.corda.lib.accounts.contracts.states.AccountInfo;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import net.corda.core.contracts.StateAndRef;
-import net.corda.core.identity.CordaX500Name;
 import net.corda.core.identity.Party;
 import net.corda.core.messaging.CordaRPCOps;
+import net.corda.transafe.accountUtilities.CreateNewAccount;
 import net.corda.transafe.accountUtilities.ShareAccountTo;
 import net.corda.transafe.flows.GetAllAccountsFlow;
 import net.corda.transafe.request.HandShakeRequest;
@@ -19,10 +20,11 @@ import java.util.Set;
 import java.util.concurrent.ExecutionException;
 
 @Service
-@RequiredArgsConstructor
+@NoArgsConstructor
+@Setter
 public class AccountManagementService implements IAccountManagementService{
 
-    private final CordaRPCOps proxy;
+    private CordaRPCOps proxy;
 
     @Override
     public HandShakeResponse handShake(HandShakeRequest request) throws ExecutionException, InterruptedException {
@@ -42,4 +44,12 @@ public class AccountManagementService implements IAccountManagementService{
         response.setSuccess(true);
         return response;
     }
+
+    @Override
+    public String createAccount(String accountName) throws ExecutionException, InterruptedException {
+        return proxy.startTrackedFlowDynamic(CreateNewAccount.class, accountName)
+                .getReturnValue()
+                .get();
+    }
+
 }

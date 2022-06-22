@@ -10,4 +10,6 @@ public interface IAccountManagementService {
     HandShakeResponse handShake(HandShakeRequest request) throws ExecutionException, InterruptedException;
 
     ReceiveAllAccountsResponse receiveAllAccounts() throws ExecutionException, InterruptedException;
+
+    String createAccount(String accountName) throws ExecutionException, InterruptedException;
 }
