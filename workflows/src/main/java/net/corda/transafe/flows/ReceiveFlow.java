@@ -20,7 +20,7 @@ import net.corda.core.transactions.SignedTransaction;
 import net.corda.core.transactions.TransactionBuilder;
 import net.corda.core.utilities.ProgressTracker;
 import net.corda.core.utilities.ProgressTracker.Step;
-import net.corda.transafe.accountUtilities.NewKeyForAccount;
+import net.corda.transafe.utilities.NewKeyForAccount;
 import net.corda.transafe.contracts.TransferContract;
 import net.corda.transafe.states.TransferState;
 
@@ -121,7 +121,7 @@ public class ReceiveFlow {
             QueryCriteria.LinearStateQueryCriteria queryCriteria = new QueryCriteria.LinearStateQueryCriteria()
                     .withUuid(Collections.singletonList(id))
                     .withRelevancyStatus(Vault.RelevancyStatus.RELEVANT).withStatus(Vault.StateStatus.UNCONSUMED);
-            if(getServiceHub().getVaultService().queryBy(TransferState.class, queryCriteria).getStates().size() == 0){
+            if(getServiceHub().getVaultService().queryBy(TransferState.class, queryCriteria).getStates().isEmpty()){
                 throw new FlowException("Not found any states with given linear id and accounts");
             }
             StateAndRef<TransferState> inputTransferStateAndRef = getServiceHub().getVaultService().queryBy(TransferState.class, queryCriteria).getStates().get(0);
@@ -131,8 +131,6 @@ public class ReceiveFlow {
             }if(!inputTransferState.getReceiverAccount().equals(receiver)){
                 throw new FlowException("The receiver account does not match!");
             }
-            /*List<TransferState> inputTransferStates = inputTransferStateAndRef.stream().map(state -> state.getState().getData())
-                    .filter(state -> !state.isReceived() && state.getReceiverAccount().equals(receiver) && state.getSenderAccount().equals(sender)).collect(Collectors.toList());*/
             //change the receiving status
             TransferState outputTransferState = inputTransferState.receiveTransfer(targetAcctAnonymousParty, new AnonymousParty(myKey));
             // Obtain a reference to a notary we wish to use.
@@ -168,17 +166,17 @@ public class ReceiveFlow {
             List<TransactionSignature> accountToMoveToSignature = (List<TransactionSignature>) subFlow(new CollectSignatureFlow(partSignedTx,
                     otherPartySession, targetAcctAnonymousParty.getOwningKey()));
 
-            System.out.println("--accountToMoveToSignature-- ");
+            System.out.println("Collected Signs");
             SignedTransaction signedByCounterParty = partSignedTx.withAdditionalSignatures(accountToMoveToSignature);
-            System.out.println("--signedByCounterParty-- ");
+            System.out.println("Combined Signs");
 
             // Stage 5.
             progressTracker.setCurrentStep(FINALISING_TRANSACTION);
 
             // Notarise and record the transaction in both parties' vaults.
             List<FlowSession> sessions = !getServiceHub().getMyInfo().isLegalIdentity(targetAccount.getHost())
-                    ? Arrays.asList(otherPartySession).stream().filter(it -> it.getCounterparty() != getOurIdentity()).collect(Collectors.toList())
-                    : Collections.emptyList();
+                    ? Collections.singletonList(otherPartySession).stream().filter(it -> it.getCounterparty() != getOurIdentity()).collect(Collectors.toList()) // for the transaction that is between different nodes
+                    : Collections.emptyList();// for the transaction that is in same node
 
             SignedTransaction fullySignedTx = subFlow(new FinalityFlow(signedByCounterParty, sessions, StatesToRecord.ALL_VISIBLE));
             System.out.println("\n--fullySignedTx--\n");

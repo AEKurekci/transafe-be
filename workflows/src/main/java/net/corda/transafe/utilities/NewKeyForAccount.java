@@ -1,4 +1,4 @@
-package net.corda.transafe.accountUtilities;
+package net.corda.transafe.utilities;
 
 import co.paralleluniverse.fibers.Suspendable;
 import net.corda.core.flows.FlowException;

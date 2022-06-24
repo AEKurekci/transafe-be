@@ -1,8 +1,7 @@
-package net.corda.transafe.accountUtilities;
+package net.corda.transafe.utilities;
 
 import co.paralleluniverse.fibers.Suspendable;
 import com.r3.corda.lib.accounts.contracts.states.AccountInfo;
-import com.r3.corda.lib.accounts.workflows.flows.AccountInfoByName;
 import com.r3.corda.lib.accounts.workflows.services.KeyManagementBackedAccountService;
 import net.corda.core.contracts.StateAndRef;
 import net.corda.core.flows.FlowException;
@@ -29,11 +28,11 @@ public class ShareAccountTo extends FlowLogic<String>{
     @Suspendable
     public String call() throws FlowException {
         List<StateAndRef<AccountInfo>> allmyAccounts = getServiceHub().cordaService(KeyManagementBackedAccountService.class).ourAccounts();
-        StateAndRef<AccountInfo> SharedAccount = allmyAccounts.stream()
+        StateAndRef<AccountInfo> sharedAccount = allmyAccounts.stream()
                 .filter(it -> it.getState().getData().getName().equals(acctNameShared))
                 .findAny().get();
 
-        subFlow(new ShareAccountInfo(SharedAccount, Arrays.asList(shareTo)));
+        subFlow(new ShareAccountInfo(sharedAccount, Collections.singletonList(shareTo)));
         return "Shared " + acctNameShared + " with " + shareTo.getName().getOrganisation();
     }
 }

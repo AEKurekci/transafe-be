@@ -19,7 +19,7 @@ import net.corda.core.transactions.SignedTransaction;
 import net.corda.core.transactions.TransactionBuilder;
 import net.corda.core.utilities.ProgressTracker;
 import net.corda.core.utilities.ProgressTracker.Step;
-import net.corda.transafe.accountUtilities.NewKeyForAccount;
+import net.corda.transafe.utilities.NewKeyForAccount;
 import net.corda.transafe.contracts.TransferContract;
 import net.corda.transafe.states.TransferState;
 
@@ -27,7 +27,6 @@ import java.security.PublicKey;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -159,7 +158,7 @@ public class TransferFlow {
             // Notarise and record the transaction in both parties' vaults.
 
             List<FlowSession> sessions = !getServiceHub().getMyInfo().isLegalIdentity(targetAccount.getHost())
-                            ? Arrays.asList(otherPartySession).stream().filter(it -> it.getCounterparty() != getOurIdentity()).collect(Collectors.toList())
+                            ? Collections.singletonList(otherPartySession).stream().filter(it -> it.getCounterparty() != getOurIdentity()).collect(Collectors.toList())
                     : Collections.emptyList();
             SignedTransaction fullySignedTx = subFlow(new FinalityFlow(signedByCounterParty, sessions, StatesToRecord.ALL_VISIBLE));
             subFlow(new SyncTransfers(transferState.getLinearId().toString(),targetAccount.getHost()));

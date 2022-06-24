@@ -1,0 +1,469 @@
+[INFO ] 2022-06-24T13:15:21,025 [main] Starter - Starting Starter on LAPTOP-H6FFKGF2 with PID 17864 (C:\Users\AliKurekci\Desktop\ali\transafe-be\clients\build\classes\java\main started by AliKurekci in C:\Users\AliKurekci\Desktop\ali\transafe-be)
+[INFO ] 2022-06-24T13:15:21,055 [main] Starter - No active profile set, falling back to default profiles: default
+[INFO ] 2022-06-24T13:15:21,161 [main] AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@42561fba: startup date [Fri Jun 24 16:15:21 EET 2022]; root of context hierarchy
+[INFO ] 2022-06-24T13:15:25,028 [main] TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2022-06-24T13:15:25,057 [main] Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-06-24T13:15:25,079 [main] StandardService - Starting service [Tomcat]
+[INFO ] 2022-06-24T13:15:25,080 [main] StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.31
+[INFO ] 2022-06-24T13:15:25,100 [localhost-startStop-1] AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_333\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Python310\Scripts\;C:\Python310\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X64\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X86\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk1.8.0_333\bin;C:\Users\AliKurekci\AppData\Local\Microsoft\WindowsApps;C:\Users\AliKurekci\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\PyCharm 2021.3.2\bin;;C:\Users\AliKurekci\AppData\Roaming\npm;C:\Program Files\Java\jdk1.8.0_333\bin;;.]
+[INFO ] 2022-06-24T13:15:25,395 [localhost-startStop-1] [/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2022-06-24T13:15:25,396 [localhost-startStop-1] ContextLoader - Root WebApplicationContext: initialization completed in 4240 ms
+[INFO ] 2022-06-24T13:15:25,729 [localhost-startStop-1] ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+[INFO ] 2022-06-24T13:15:25,749 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+[INFO ] 2022-06-24T13:15:25,750 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+[INFO ] 2022-06-24T13:15:25,751 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+[INFO ] 2022-06-24T13:15:25,751 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+[INFO ] 2022-06-24T13:15:33,416 [main] RPCClient - Failed Startup took 2955 msec
+[WARN ] 2022-06-24T13:15:33,417 [main] AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'controller' defined in file [C:\Users\AliKurekci\Desktop\ali\transafe-be\clients\build\classes\java\main\net\corda\transafe\webserver\Controller.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'nodeRPCConnection': Invocation of init method failed; nested exception is net.corda.client.rpc.RPCException: Cannot connect to server(s). Tried with all available servers.
+[INFO ] 2022-06-24T13:15:33,419 [main] StandardService - Stopping service [Tomcat]
+[INFO ] 2022-06-24T13:15:33,428 [main] ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[ERROR] 2022-06-24T13:15:33,431 [main] SpringApplication - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'controller' defined in file [C:\Users\AliKurekci\Desktop\ali\transafe-be\clients\build\classes\java\main\net\corda\transafe\webserver\Controller.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'nodeRPCConnection': Invocation of init method failed; nested exception is net.corda.client.rpc.RPCException: Cannot connect to server(s). Tried with all available servers.
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:733) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:198) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1266) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1123) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:754) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:881) ~[spring-context-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551) ~[spring-context-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140) ~[spring-boot-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759) [spring-boot-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:395) [spring-boot-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:327) [spring-boot-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at net.corda.transafe.webserver.Starter.main(Starter.java:25) [main/:?]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'nodeRPCConnection': Invocation of init method failed; nested exception is net.corda.client.rpc.RPCException: Cannot connect to server(s). Tried with all available servers.
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:139) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:416) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1686) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:573) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1130) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1057) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:819) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:725) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	... 17 more
+Caused by: net.corda.client.rpc.RPCException: Cannot connect to server(s). Tried with all available servers.
+	at net.corda.client.rpc.internal.RPCClientProxyHandler.start(RPCClientProxyHandler.kt:285) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.internal.RPCClient$start$1.invoke(RPCClient.kt:106) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.internal.RPCClient$start$1.invoke(RPCClient.kt:36) ~[corda-rpc-4.9.jar:?]
+	at net.corda.core.internal.InternalUtils.logElapsedTime(InternalUtils.kt:228) ~[corda-core-4.9.jar:?]
+	at net.corda.core.internal.InternalUtils.logElapsedTime(InternalUtils.kt:218) ~[corda-core-4.9.jar:?]
+	at net.corda.client.rpc.internal.RPCClient.start(RPCClient.kt:81) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.CordaRPCClient.start(CordaRPCClient.kt:587) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.CordaRPCClient.start(CordaRPCClient.kt:542) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.CordaRPCClient.start(CordaRPCClient.kt:496) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.CordaRPCClient.start$default(CordaRPCClient.kt:494) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.CordaRPCClient.start(CordaRPCClient.kt) ~[corda-rpc-4.9.jar:?]
+	at net.corda.transafe.webserver.NodeRPCConnection.initialiseNodeRPCConnection(NodeRPCConnection.java:42) ~[main/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_333]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_333]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_333]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_333]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:366) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:309) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:136) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:416) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1686) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:573) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1130) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1057) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:819) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:725) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	... 17 more
+Caused by: org.apache.activemq.artemis.api.core.ActiveMQNotConnectedException: AMQ219007: Cannot connect to server(s). Tried with all available servers.
+	at org.apache.activemq.artemis.core.client.impl.ServerLocatorImpl.createSessionFactory(ServerLocatorImpl.java:708) ~[artemis-core-client-2.19.1.jar:2.19.1]
+	at net.corda.client.rpc.internal.RPCClientProxyHandler.start(RPCClientProxyHandler.kt:283) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.internal.RPCClient$start$1.invoke(RPCClient.kt:106) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.internal.RPCClient$start$1.invoke(RPCClient.kt:36) ~[corda-rpc-4.9.jar:?]
+	at net.corda.core.internal.InternalUtils.logElapsedTime(InternalUtils.kt:228) ~[corda-core-4.9.jar:?]
+	at net.corda.core.internal.InternalUtils.logElapsedTime(InternalUtils.kt:218) ~[corda-core-4.9.jar:?]
+	at net.corda.client.rpc.internal.RPCClient.start(RPCClient.kt:81) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.CordaRPCClient.start(CordaRPCClient.kt:587) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.CordaRPCClient.start(CordaRPCClient.kt:542) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.CordaRPCClient.start(CordaRPCClient.kt:496) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.CordaRPCClient.start$default(CordaRPCClient.kt:494) ~[corda-rpc-4.9.jar:?]
+	at net.corda.client.rpc.CordaRPCClient.start(CordaRPCClient.kt) ~[corda-rpc-4.9.jar:?]
+	at net.corda.transafe.webserver.NodeRPCConnection.initialiseNodeRPCConnection(NodeRPCConnection.java:42) ~[main/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_333]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_333]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_333]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_333]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:366) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:309) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:136) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:416) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1686) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:573) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1130) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1057) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:819) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:725) ~[spring-beans-5.0.15.RELEASE.jar:5.0.15.RELEASE]
+	... 17 more
+[INFO ] 2022-06-24T13:21:18,193 [main] Starter - Starting Starter on LAPTOP-H6FFKGF2 with PID 18404 (C:\Users\AliKurekci\Desktop\ali\transafe-be\clients\build\classes\java\main started by AliKurekci in C:\Users\AliKurekci\Desktop\ali\transafe-be)
+[INFO ] 2022-06-24T13:21:18,208 [main] Starter - No active profile set, falling back to default profiles: default
+[INFO ] 2022-06-24T13:21:18,393 [main] AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1144a55a: startup date [Fri Jun 24 16:21:18 EET 2022]; root of context hierarchy
+[INFO ] 2022-06-24T13:21:24,169 [main] TomcatWebServer - Tomcat initialized with port(s): 8090 (http)
+[INFO ] 2022-06-24T13:21:24,195 [main] Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"]
+[INFO ] 2022-06-24T13:21:24,217 [main] StandardService - Starting service [Tomcat]
+[INFO ] 2022-06-24T13:21:24,217 [main] StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.31
+[INFO ] 2022-06-24T13:21:24,236 [localhost-startStop-1] AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_333\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Python310\Scripts\;C:\Python310\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X64\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X86\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk1.8.0_333\bin;C:\Users\AliKurekci\AppData\Local\Microsoft\WindowsApps;C:\Users\AliKurekci\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\PyCharm 2021.3.2\bin;;C:\Users\AliKurekci\AppData\Roaming\npm;C:\Program Files\Java\jdk1.8.0_333\bin;;.]
+[INFO ] 2022-06-24T13:21:24,619 [localhost-startStop-1] [/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2022-06-24T13:21:24,620 [localhost-startStop-1] ContextLoader - Root WebApplicationContext: initialization completed in 6233 ms
+[INFO ] 2022-06-24T13:21:25,020 [localhost-startStop-1] ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+[INFO ] 2022-06-24T13:21:25,032 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+[INFO ] 2022-06-24T13:21:25,033 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+[INFO ] 2022-06-24T13:21:25,034 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+[INFO ] 2022-06-24T13:21:25,035 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+[INFO ] 2022-06-24T13:21:39,108 [main] RPCClient - Startup took 4679 msec
+[INFO ] 2022-06-24T13:21:41,623 [main] SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[INFO ] 2022-06-24T13:21:42,151 [main] RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1144a55a: startup date [Fri Jun 24 16:21:18 EET 2022]; root of context hierarchy
+[INFO ] 2022-06-24T13:21:42,496 [main] RequestMappingHandlerMapping - Mapped "{[/receiveAllAccounts],methods=[GET]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.ReceiveAllAccountsResponse> net.corda.transafe.webserver.Controller.receiveAllAccounts()
+[INFO ] 2022-06-24T13:21:42,502 [main] RequestMappingHandlerMapping - Mapped "{[/getHistoricDataByLinearId],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.GetAllTransfersResponse> net.corda.transafe.webserver.Controller.getHistoricDataByLinearId(net.corda.transafe.request.GetAllTransfersRequest)
+[INFO ] 2022-06-24T13:21:42,505 [main] RequestMappingHandlerMapping - Mapped "{[/me],methods=[GET],produces=[application/json]}" onto public java.util.Map<java.lang.String, java.lang.String> net.corda.transafe.webserver.Controller.whoAmI()
+[INFO ] 2022-06-24T13:21:42,508 [main] RequestMappingHandlerMapping - Mapped "{[/sendFile],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.DocumentTransferResponse> net.corda.transafe.webserver.Controller.sendFile(net.corda.transafe.request.DocumentTransferRequest)
+[INFO ] 2022-06-24T13:21:42,515 [main] RequestMappingHandlerMapping - Mapped "{[/receiveFile],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.ReceiveFileResponse> net.corda.transafe.webserver.Controller.receiveFile(net.corda.transafe.request.ReceiveFileRequest)
+[INFO ] 2022-06-24T13:21:42,519 [main] RequestMappingHandlerMapping - Mapped "{[/getTransfers],methods=[GET],produces=[application/json]}" onto public java.util.List<net.corda.core.contracts.StateAndRef<net.corda.transafe.states.TransferState>> net.corda.transafe.webserver.Controller.getIOUs()
+[INFO ] 2022-06-24T13:21:42,520 [main] RequestMappingHandlerMapping - Mapped "{[/getMyTransfers],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.GetMyTransfersResponse> net.corda.transafe.webserver.Controller.getMyTransfer(net.corda.transafe.request.GetMyTransfersRequest)
+[INFO ] 2022-06-24T13:21:42,523 [main] RequestMappingHandlerMapping - Mapped "{[/handShake],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.HandShakeResponse> net.corda.transafe.webserver.Controller.handShake(net.corda.transafe.request.HandShakeRequest)
+[INFO ] 2022-06-24T13:21:42,527 [main] RequestMappingHandlerMapping - Mapped "{[/createAccount/{acctName}],methods=[POST]}" onto public org.springframework.http.ResponseEntity<java.lang.String> net.corda.transafe.webserver.Controller.createAccount(java.lang.String)
+[INFO ] 2022-06-24T13:21:42,549 [main] RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+[INFO ] 2022-06-24T13:21:42,552 [main] RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+[INFO ] 2022-06-24T13:21:42,678 [main] SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[INFO ] 2022-06-24T13:21:42,686 [main] SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[INFO ] 2022-06-24T13:21:42,981 [main] WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+[INFO ] 2022-06-24T13:21:43,630 [main] AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+[INFO ] 2022-06-24T13:21:43,678 [main] Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"]
+[INFO ] 2022-06-24T13:21:43,681 [main] NioSelectorPool - Using a shared selector for servlet write/read
+[INFO ] 2022-06-24T13:21:43,727 [main] TomcatWebServer - Tomcat started on port(s): 8090 (http) with context path ''
+[INFO ] 2022-06-24T13:21:43,735 [main] Starter - Started Starter in 27.215 seconds (JVM running for 28.602)
+[INFO ] 2022-06-24T13:21:52,330 [main] Starter - Starting Starter on LAPTOP-H6FFKGF2 with PID 27700 (C:\Users\AliKurekci\Desktop\ali\transafe-be\clients\build\classes\java\main started by AliKurekci in C:\Users\AliKurekci\Desktop\ali\transafe-be)
+[INFO ] 2022-06-24T13:21:52,338 [main] Starter - No active profile set, falling back to default profiles: default
+[INFO ] 2022-06-24T13:21:52,430 [main] AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3b8ee898: startup date [Fri Jun 24 16:21:52 EET 2022]; root of context hierarchy
+[INFO ] 2022-06-24T13:21:55,497 [main] TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2022-06-24T13:21:55,520 [main] Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-06-24T13:21:55,537 [main] StandardService - Starting service [Tomcat]
+[INFO ] 2022-06-24T13:21:55,538 [main] StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.31
+[INFO ] 2022-06-24T13:21:55,555 [localhost-startStop-1] AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_333\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Python310\Scripts\;C:\Python310\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X64\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X86\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk1.8.0_333\bin;C:\Users\AliKurekci\AppData\Local\Microsoft\WindowsApps;C:\Users\AliKurekci\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\PyCharm 2021.3.2\bin;;C:\Users\AliKurekci\AppData\Roaming\npm;C:\Program Files\Java\jdk1.8.0_333\bin;;.]
+[INFO ] 2022-06-24T13:21:55,774 [localhost-startStop-1] [/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2022-06-24T13:21:55,776 [localhost-startStop-1] ContextLoader - Root WebApplicationContext: initialization completed in 3353 ms
+[INFO ] 2022-06-24T13:21:55,986 [localhost-startStop-1] ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+[INFO ] 2022-06-24T13:21:55,993 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+[INFO ] 2022-06-24T13:21:55,993 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+[INFO ] 2022-06-24T13:21:55,993 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+[INFO ] 2022-06-24T13:21:55,994 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+[INFO ] 2022-06-24T13:22:02,970 [main] RPCClient - Startup took 2044 msec
+[INFO ] 2022-06-24T13:22:04,060 [main] SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[INFO ] 2022-06-24T13:22:04,316 [main] RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3b8ee898: startup date [Fri Jun 24 16:21:52 EET 2022]; root of context hierarchy
+[INFO ] 2022-06-24T13:22:04,462 [main] RequestMappingHandlerMapping - Mapped "{[/receiveFile],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.ReceiveFileResponse> net.corda.transafe.webserver.Controller.receiveFile(net.corda.transafe.request.ReceiveFileRequest)
+[INFO ] 2022-06-24T13:22:04,466 [main] RequestMappingHandlerMapping - Mapped "{[/handShake],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.HandShakeResponse> net.corda.transafe.webserver.Controller.handShake(net.corda.transafe.request.HandShakeRequest)
+[INFO ] 2022-06-24T13:22:04,467 [main] RequestMappingHandlerMapping - Mapped "{[/sendFile],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.DocumentTransferResponse> net.corda.transafe.webserver.Controller.sendFile(net.corda.transafe.request.DocumentTransferRequest)
+[INFO ] 2022-06-24T13:22:04,468 [main] RequestMappingHandlerMapping - Mapped "{[/createAccount/{acctName}],methods=[POST]}" onto public org.springframework.http.ResponseEntity<java.lang.String> net.corda.transafe.webserver.Controller.createAccount(java.lang.String)
+[INFO ] 2022-06-24T13:22:04,470 [main] RequestMappingHandlerMapping - Mapped "{[/getTransfers],methods=[GET],produces=[application/json]}" onto public java.util.List<net.corda.core.contracts.StateAndRef<net.corda.transafe.states.TransferState>> net.corda.transafe.webserver.Controller.getIOUs()
+[INFO ] 2022-06-24T13:22:04,471 [main] RequestMappingHandlerMapping - Mapped "{[/getMyTransfers],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.GetMyTransfersResponse> net.corda.transafe.webserver.Controller.getMyTransfer(net.corda.transafe.request.GetMyTransfersRequest)
+[INFO ] 2022-06-24T13:22:04,472 [main] RequestMappingHandlerMapping - Mapped "{[/me],methods=[GET],produces=[application/json]}" onto public java.util.Map<java.lang.String, java.lang.String> net.corda.transafe.webserver.Controller.whoAmI()
+[INFO ] 2022-06-24T13:22:04,473 [main] RequestMappingHandlerMapping - Mapped "{[/receiveAllAccounts],methods=[GET]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.ReceiveAllAccountsResponse> net.corda.transafe.webserver.Controller.receiveAllAccounts()
+[INFO ] 2022-06-24T13:22:04,474 [main] RequestMappingHandlerMapping - Mapped "{[/getHistoricDataByLinearId],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.GetAllTransfersResponse> net.corda.transafe.webserver.Controller.getHistoricDataByLinearId(net.corda.transafe.request.GetAllTransfersRequest)
+[INFO ] 2022-06-24T13:22:04,479 [main] RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+[INFO ] 2022-06-24T13:22:04,480 [main] RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+[INFO ] 2022-06-24T13:22:04,527 [main] SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[INFO ] 2022-06-24T13:22:04,528 [main] SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[INFO ] 2022-06-24T13:22:04,608 [main] WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+[INFO ] 2022-06-24T13:22:04,882 [main] AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+[INFO ] 2022-06-24T13:22:04,902 [main] Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-06-24T13:22:04,904 [main] NioSelectorPool - Using a shared selector for servlet write/read
+[INFO ] 2022-06-24T13:22:04,935 [main] TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2022-06-24T13:22:04,943 [main] Starter - Started Starter in 14.568 seconds (JVM running for 16.153)
+[INFO ] 2022-06-24T13:22:26,801 [http-nio-8090-exec-2] [/] - Initializing Spring FrameworkServlet 'dispatcherServlet'
+[INFO ] 2022-06-24T13:22:26,801 [http-nio-8090-exec-2] DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization started
+[INFO ] 2022-06-24T13:22:26,821 [http-nio-8090-exec-2] DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization completed in 20 ms
+[INFO ] 2022-06-24T13:22:26,947 [http-nio-8090-exec-2] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:22:43,791 [http-nio-8090-exec-3] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T13:22:44,328 [http-nio-8090-exec-4] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:24:47,933 [http-nio-8080-exec-1] [/] - Initializing Spring FrameworkServlet 'dispatcherServlet'
+[INFO ] 2022-06-24T13:24:47,933 [http-nio-8080-exec-1] DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization started
+[INFO ] 2022-06-24T13:24:47,950 [http-nio-8080-exec-1] DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization completed in 17 ms
+[INFO ] 2022-06-24T13:24:48,055 [http-nio-8080-exec-1] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:25:12,963 [http-nio-8080-exec-4] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:33:02,010 [main] Starter - Starting Starter on LAPTOP-H6FFKGF2 with PID 28448 (C:\Users\AliKurekci\Desktop\ali\transafe-be\clients\build\classes\java\main started by AliKurekci in C:\Users\AliKurekci\Desktop\ali\transafe-be)
+[INFO ] 2022-06-24T13:33:02,024 [main] Starter - No active profile set, falling back to default profiles: default
+[INFO ] 2022-06-24T13:33:02,140 [main] AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5649ec46: startup date [Fri Jun 24 16:33:02 EET 2022]; root of context hierarchy
+[INFO ] 2022-06-24T13:33:04,973 [main] TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2022-06-24T13:33:04,997 [main] Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-06-24T13:33:05,015 [main] StandardService - Starting service [Tomcat]
+[INFO ] 2022-06-24T13:33:05,015 [main] StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.31
+[INFO ] 2022-06-24T13:33:05,029 [localhost-startStop-1] AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_333\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Python310\Scripts\;C:\Python310\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X64\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X86\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk1.8.0_333\bin;C:\Users\AliKurekci\AppData\Local\Microsoft\WindowsApps;C:\Users\AliKurekci\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\PyCharm 2021.3.2\bin;;C:\Users\AliKurekci\AppData\Roaming\npm;C:\Program Files\Java\jdk1.8.0_333\bin;;.]
+[INFO ] 2022-06-24T13:33:05,255 [localhost-startStop-1] [/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2022-06-24T13:33:05,256 [localhost-startStop-1] ContextLoader - Root WebApplicationContext: initialization completed in 3123 ms
+[INFO ] 2022-06-24T13:33:05,525 [localhost-startStop-1] ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+[INFO ] 2022-06-24T13:33:05,533 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+[INFO ] 2022-06-24T13:33:05,535 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+[INFO ] 2022-06-24T13:33:05,536 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+[INFO ] 2022-06-24T13:33:05,536 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+[INFO ] 2022-06-24T13:33:15,726 [main] RPCClient - Startup took 4064 msec
+[INFO ] 2022-06-24T13:33:17,408 [main] SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[INFO ] 2022-06-24T13:33:17,957 [main] RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5649ec46: startup date [Fri Jun 24 16:33:02 EET 2022]; root of context hierarchy
+[INFO ] 2022-06-24T13:33:18,287 [main] RequestMappingHandlerMapping - Mapped "{[/createAccount/{acctName}],methods=[POST]}" onto public org.springframework.http.ResponseEntity<java.lang.String> net.corda.transafe.webserver.Controller.createAccount(java.lang.String)
+[INFO ] 2022-06-24T13:33:18,295 [main] RequestMappingHandlerMapping - Mapped "{[/handShake],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.HandShakeResponse> net.corda.transafe.webserver.Controller.handShake(net.corda.transafe.request.HandShakeRequest)
+[INFO ] 2022-06-24T13:33:18,302 [main] RequestMappingHandlerMapping - Mapped "{[/sendFile],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.DocumentTransferResponse> net.corda.transafe.webserver.Controller.sendFile(net.corda.transafe.request.DocumentTransferRequest)
+[INFO ] 2022-06-24T13:33:18,303 [main] RequestMappingHandlerMapping - Mapped "{[/receiveFile],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.ReceiveFileResponse> net.corda.transafe.webserver.Controller.receiveFile(net.corda.transafe.request.ReceiveFileRequest)
+[INFO ] 2022-06-24T13:33:18,309 [main] RequestMappingHandlerMapping - Mapped "{[/getTransfers],methods=[GET],produces=[application/json]}" onto public java.util.List<net.corda.core.contracts.StateAndRef<net.corda.transafe.states.TransferState>> net.corda.transafe.webserver.Controller.getIOUs()
+[INFO ] 2022-06-24T13:33:18,310 [main] RequestMappingHandlerMapping - Mapped "{[/getMyTransfers],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.GetMyTransfersResponse> net.corda.transafe.webserver.Controller.getMyTransfer(net.corda.transafe.request.GetMyTransfersRequest)
+[INFO ] 2022-06-24T13:33:18,312 [main] RequestMappingHandlerMapping - Mapped "{[/me],methods=[GET],produces=[application/json]}" onto public java.util.Map<java.lang.String, java.lang.String> net.corda.transafe.webserver.Controller.whoAmI()
+[INFO ] 2022-06-24T13:33:18,314 [main] RequestMappingHandlerMapping - Mapped "{[/getHistoricDataByLinearId],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.GetAllTransfersResponse> net.corda.transafe.webserver.Controller.getHistoricDataByLinearId(net.corda.transafe.request.GetAllTransfersRequest)
+[INFO ] 2022-06-24T13:33:18,315 [main] RequestMappingHandlerMapping - Mapped "{[/receiveAllAccounts],methods=[GET]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.ReceiveAllAccountsResponse> net.corda.transafe.webserver.Controller.receiveAllAccounts()
+[INFO ] 2022-06-24T13:33:18,331 [main] RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+[INFO ] 2022-06-24T13:33:18,336 [main] RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+[INFO ] 2022-06-24T13:33:18,500 [main] SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[INFO ] 2022-06-24T13:33:18,501 [main] SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[INFO ] 2022-06-24T13:33:18,654 [main] WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+[INFO ] 2022-06-24T13:33:19,242 [main] AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+[INFO ] 2022-06-24T13:33:19,279 [main] Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2022-06-24T13:33:19,282 [main] NioSelectorPool - Using a shared selector for servlet write/read
+[INFO ] 2022-06-24T13:33:19,339 [main] TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2022-06-24T13:33:19,347 [main] Starter - Started Starter in 18.925 seconds (JVM running for 20.324)
+[INFO ] 2022-06-24T13:33:30,174 [main] Starter - Starting Starter on LAPTOP-H6FFKGF2 with PID 15672 (C:\Users\AliKurekci\Desktop\ali\transafe-be\clients\build\classes\java\main started by AliKurekci in C:\Users\AliKurekci\Desktop\ali\transafe-be)
+[INFO ] 2022-06-24T13:33:30,182 [main] Starter - No active profile set, falling back to default profiles: default
+[INFO ] 2022-06-24T13:33:30,273 [main] AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4fe01805: startup date [Fri Jun 24 16:33:30 EET 2022]; root of context hierarchy
+[INFO ] 2022-06-24T13:33:32,914 [main] TomcatWebServer - Tomcat initialized with port(s): 8090 (http)
+[INFO ] 2022-06-24T13:33:32,936 [main] Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"]
+[INFO ] 2022-06-24T13:33:32,951 [main] StandardService - Starting service [Tomcat]
+[INFO ] 2022-06-24T13:33:32,952 [main] StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.31
+[INFO ] 2022-06-24T13:33:32,967 [localhost-startStop-1] AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_333\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Python310\Scripts\;C:\Python310\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X64\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X86\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk1.8.0_333\bin;C:\Users\AliKurekci\AppData\Local\Microsoft\WindowsApps;C:\Users\AliKurekci\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\PyCharm 2021.3.2\bin;;C:\Users\AliKurekci\AppData\Roaming\npm;C:\Program Files\Java\jdk1.8.0_333\bin;;.]
+[INFO ] 2022-06-24T13:33:33,223 [localhost-startStop-1] [/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2022-06-24T13:33:33,224 [localhost-startStop-1] ContextLoader - Root WebApplicationContext: initialization completed in 2957 ms
+[INFO ] 2022-06-24T13:33:33,504 [localhost-startStop-1] ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+[INFO ] 2022-06-24T13:33:33,512 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+[INFO ] 2022-06-24T13:33:33,512 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+[INFO ] 2022-06-24T13:33:33,513 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+[INFO ] 2022-06-24T13:33:33,513 [localhost-startStop-1] FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+[INFO ] 2022-06-24T13:33:40,164 [main] RPCClient - Startup took 1896 msec
+[INFO ] 2022-06-24T13:33:41,088 [main] SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[INFO ] 2022-06-24T13:33:41,327 [main] RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4fe01805: startup date [Fri Jun 24 16:33:30 EET 2022]; root of context hierarchy
+[INFO ] 2022-06-24T13:33:41,477 [main] RequestMappingHandlerMapping - Mapped "{[/createAccount/{acctName}],methods=[POST]}" onto public org.springframework.http.ResponseEntity<java.lang.String> net.corda.transafe.webserver.Controller.createAccount(java.lang.String)
+[INFO ] 2022-06-24T13:33:41,480 [main] RequestMappingHandlerMapping - Mapped "{[/handShake],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.HandShakeResponse> net.corda.transafe.webserver.Controller.handShake(net.corda.transafe.request.HandShakeRequest)
+[INFO ] 2022-06-24T13:33:41,481 [main] RequestMappingHandlerMapping - Mapped "{[/sendFile],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.DocumentTransferResponse> net.corda.transafe.webserver.Controller.sendFile(net.corda.transafe.request.DocumentTransferRequest)
+[INFO ] 2022-06-24T13:33:41,482 [main] RequestMappingHandlerMapping - Mapped "{[/me],methods=[GET],produces=[application/json]}" onto public java.util.Map<java.lang.String, java.lang.String> net.corda.transafe.webserver.Controller.whoAmI()
+[INFO ] 2022-06-24T13:33:41,483 [main] RequestMappingHandlerMapping - Mapped "{[/receiveFile],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.ReceiveFileResponse> net.corda.transafe.webserver.Controller.receiveFile(net.corda.transafe.request.ReceiveFileRequest)
+[INFO ] 2022-06-24T13:33:41,484 [main] RequestMappingHandlerMapping - Mapped "{[/getTransfers],methods=[GET],produces=[application/json]}" onto public java.util.List<net.corda.core.contracts.StateAndRef<net.corda.transafe.states.TransferState>> net.corda.transafe.webserver.Controller.getIOUs()
+[INFO ] 2022-06-24T13:33:41,486 [main] RequestMappingHandlerMapping - Mapped "{[/getMyTransfers],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.GetMyTransfersResponse> net.corda.transafe.webserver.Controller.getMyTransfer(net.corda.transafe.request.GetMyTransfersRequest)
+[INFO ] 2022-06-24T13:33:41,486 [main] RequestMappingHandlerMapping - Mapped "{[/getHistoricDataByLinearId],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.GetAllTransfersResponse> net.corda.transafe.webserver.Controller.getHistoricDataByLinearId(net.corda.transafe.request.GetAllTransfersRequest)
+[INFO ] 2022-06-24T13:33:41,488 [main] RequestMappingHandlerMapping - Mapped "{[/receiveAllAccounts],methods=[GET]}" onto public org.springframework.http.ResponseEntity<net.corda.transafe.response.ReceiveAllAccountsResponse> net.corda.transafe.webserver.Controller.receiveAllAccounts()
+[INFO ] 2022-06-24T13:33:41,492 [main] RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+[INFO ] 2022-06-24T13:33:41,493 [main] RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+[INFO ] 2022-06-24T13:33:41,549 [main] SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[INFO ] 2022-06-24T13:33:41,550 [main] SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[INFO ] 2022-06-24T13:33:41,647 [main] WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+[INFO ] 2022-06-24T13:33:41,973 [main] AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+[INFO ] 2022-06-24T13:33:42,000 [main] Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"]
+[INFO ] 2022-06-24T13:33:42,003 [main] NioSelectorPool - Using a shared selector for servlet write/read
+[INFO ] 2022-06-24T13:33:42,034 [main] TomcatWebServer - Tomcat started on port(s): 8090 (http) with context path ''
+[INFO ] 2022-06-24T13:33:42,043 [main] Starter - Started Starter in 13.333 seconds (JVM running for 14.826)
+[INFO ] 2022-06-24T13:34:09,927 [http-nio-8080-exec-1] [/] - Initializing Spring FrameworkServlet 'dispatcherServlet'
+[INFO ] 2022-06-24T13:34:09,927 [http-nio-8080-exec-1] DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization started
+[INFO ] 2022-06-24T13:34:09,948 [http-nio-8080-exec-1] DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization completed in 21 ms
+[INFO ] 2022-06-24T13:34:10,054 [http-nio-8080-exec-1] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:34:28,516 [http-nio-8090-exec-1] [/] - Initializing Spring FrameworkServlet 'dispatcherServlet'
+[INFO ] 2022-06-24T13:34:28,516 [http-nio-8090-exec-1] DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization started
+[INFO ] 2022-06-24T13:34:28,534 [http-nio-8090-exec-1] DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization completed in 18 ms
+[INFO ] 2022-06-24T13:34:28,577 [http-nio-8090-exec-1] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T13:34:30,300 [http-nio-8090-exec-2] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:34:48,597 [http-nio-8080-exec-4] Controller - Calling createAccount operation
+[INFO ] 2022-06-24T13:34:49,415 [http-nio-8080-exec-4] Controller - Called createAccount operation
+[INFO ] 2022-06-24T13:34:55,298 [http-nio-8080-exec-9] Controller - Calling createAccount operation
+[INFO ] 2022-06-24T13:34:55,378 [http-nio-8080-exec-9] Controller - Called createAccount operation
+[INFO ] 2022-06-24T13:35:03,029 [http-nio-8090-exec-4] Controller - Calling createAccount operation
+[INFO ] 2022-06-24T13:35:03,709 [http-nio-8090-exec-4] Controller - Called createAccount operation
+[INFO ] 2022-06-24T13:35:08,655 [http-nio-8090-exec-6] Controller - Calling createAccount operation
+[INFO ] 2022-06-24T13:35:08,740 [http-nio-8090-exec-6] Controller - Called createAccount operation
+[INFO ] 2022-06-24T13:35:14,110 [http-nio-8080-exec-3] Controller - Calling handShake operation
+[INFO ] 2022-06-24T13:35:16,817 [http-nio-8080-exec-3] Controller - Called handShake operation
+[INFO ] 2022-06-24T13:35:21,639 [http-nio-8080-exec-6] Controller - Calling handShake operation
+[INFO ] 2022-06-24T13:35:21,790 [http-nio-8080-exec-6] Controller - Called handShake operation
+[INFO ] 2022-06-24T13:35:26,727 [http-nio-8090-exec-7] Controller - Calling handShake operation
+[INFO ] 2022-06-24T13:35:27,069 [http-nio-8090-exec-7] Controller - Called handShake operation
+[INFO ] 2022-06-24T13:35:31,798 [http-nio-8090-exec-8] Controller - Calling handShake operation
+[INFO ] 2022-06-24T13:35:31,960 [http-nio-8090-exec-8] Controller - Called handShake operation
+[INFO ] 2022-06-24T13:35:39,813 [http-nio-8090-exec-9] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T13:35:43,770 [http-nio-8090-exec-10] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:35:43,819 [http-nio-8090-exec-10] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:35:48,991 [http-nio-8090-exec-5] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:35:49,051 [http-nio-8090-exec-5] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:35:49,742 [http-nio-8090-exec-1] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T13:38:13,261 [http-nio-8090-exec-6] Controller - Calling sendFile operation
+[INFO ] 2022-06-24T13:38:46,660 [http-nio-8090-exec-7] Controller - Calling sendFile operation
+[INFO ] 2022-06-24T13:39:01,906 [http-nio-8090-exec-8] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:39:01,956 [http-nio-8090-exec-8] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:39:04,777 [http-nio-8090-exec-10] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:39:04,807 [http-nio-8090-exec-10] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:39:05,527 [http-nio-8090-exec-5] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T13:40:09,883 [http-nio-8080-exec-8] Controller - Calling sendFile operation
+[INFO ] 2022-06-24T13:40:13,099 [http-nio-8080-exec-8] Controller - Called sendFile operation
+[INFO ] 2022-06-24T13:40:19,521 [http-nio-8090-exec-2] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:40:19,648 [http-nio-8090-exec-2] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:40:21,224 [http-nio-8090-exec-3] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:40:21,295 [http-nio-8090-exec-3] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:40:23,276 [http-nio-8090-exec-4] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T13:40:49,534 [http-nio-8090-exec-7] Controller - Calling sendFile operation
+[INFO ] 2022-06-24T13:40:58,114 [http-nio-8090-exec-8] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:40:58,146 [http-nio-8090-exec-8] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:40:59,610 [http-nio-8090-exec-9] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:40:59,638 [http-nio-8090-exec-9] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:41:00,962 [http-nio-8090-exec-10] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T13:41:07,438 [http-nio-8090-exec-1] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:41:07,501 [http-nio-8090-exec-1] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:41:11,125 [http-nio-8090-exec-2] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:41:11,185 [http-nio-8090-exec-2] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:41:12,157 [http-nio-8090-exec-3] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T13:41:26,814 [http-nio-8090-exec-6] Controller - Calling sendFile operation
+[INFO ] 2022-06-24T13:42:20,734 [http-nio-8090-exec-7] Controller - Calling sendFile operation
+[INFO ] 2022-06-24T13:43:18,988 [http-nio-8090-exec-8] Controller - Calling sendFile operation
+[INFO ] 2022-06-24T13:44:19,531 [http-nio-8090-exec-9] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:44:19,558 [http-nio-8090-exec-9] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:44:21,102 [http-nio-8090-exec-10] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T13:44:33,527 [http-nio-8090-exec-1] Controller - Calling sendFile operation
+[INFO ] 2022-06-24T13:45:38,275 [http-nio-8080-exec-5] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:45:38,373 [http-nio-8080-exec-5] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:45:42,518 [http-nio-8080-exec-3] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T13:46:00,357 [http-nio-8080-exec-10] Controller - Calling sendFile operation
+[INFO ] 2022-06-24T13:46:03,706 [http-nio-8080-exec-10] Controller - Called sendFile operation
+[INFO ] 2022-06-24T13:46:26,218 [http-nio-8080-exec-2] Controller - Calling sendFile operation
+[INFO ] 2022-06-24T13:46:39,765 [http-nio-8080-exec-1] Controller - Calling sendFile operation
+[INFO ] 2022-06-24T13:46:49,077 [http-nio-8080-exec-5] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:46:49,149 [http-nio-8080-exec-5] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:46:49,988 [http-nio-8080-exec-4] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:46:50,019 [http-nio-8080-exec-4] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:47:01,880 [http-nio-8080-exec-3] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:47:01,947 [http-nio-8080-exec-3] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:47:04,873 [http-nio-8080-exec-6] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:47:04,934 [http-nio-8080-exec-6] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:47:10,600 [http-nio-8080-exec-10] Controller - Calling GetAllTransactionsFlow flow
+[INFO ] 2022-06-24T13:47:10,650 [http-nio-8080-exec-10] Controller - Called GetAllTransactionsFlow flow
+[INFO ] 2022-06-24T13:47:11,938 [http-nio-8080-exec-8] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T13:47:15,082 [http-nio-8080-exec-2] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:47:15,173 [http-nio-8080-exec-2] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:47:23,742 [http-nio-8080-exec-1] Controller - Calling GetAllTransactionsFlow flow
+[INFO ] 2022-06-24T13:47:23,796 [http-nio-8080-exec-1] Controller - Called GetAllTransactionsFlow flow
+[INFO ] 2022-06-24T13:48:18,422 [http-nio-8090-exec-3] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:48:18,563 [http-nio-8090-exec-3] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:48:26,777 [http-nio-8090-exec-7] Controller - Calling receiveFile operation
+[INFO ] 2022-06-24T13:48:32,115 [http-nio-8090-exec-7] Controller - Called receiveFile operation
+[INFO ] 2022-06-24T13:48:32,221 [http-nio-8090-exec-8] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:48:32,397 [http-nio-8090-exec-8] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:48:44,837 [http-nio-8090-exec-5] Controller - Calling GetAllTransactionsFlow flow
+[INFO ] 2022-06-24T13:48:44,921 [http-nio-8090-exec-5] Controller - Called GetAllTransactionsFlow flow
+[INFO ] 2022-06-24T13:48:51,351 [http-nio-8090-exec-1] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:48:51,413 [http-nio-8090-exec-1] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:48:52,507 [http-nio-8090-exec-2] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:48:52,564 [http-nio-8090-exec-2] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:48:53,296 [http-nio-8090-exec-3] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:48:53,345 [http-nio-8090-exec-3] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:49:37,102 [http-nio-8090-exec-6] Controller - Calling GetAllTransactionsFlow flow
+[INFO ] 2022-06-24T13:49:37,190 [http-nio-8090-exec-6] Controller - Called GetAllTransactionsFlow flow
+[INFO ] 2022-06-24T13:49:48,244 [http-nio-8090-exec-8] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:49:48,298 [http-nio-8090-exec-8] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:49:51,168 [http-nio-8090-exec-9] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:49:51,220 [http-nio-8090-exec-9] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:49:51,944 [http-nio-8090-exec-10] Controller - Calling GetAllTransactionsFlow flow
+[INFO ] 2022-06-24T13:49:52,007 [http-nio-8090-exec-10] Controller - Called GetAllTransactionsFlow flow
+[INFO ] 2022-06-24T13:50:57,104 [http-nio-8090-exec-1] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:50:57,162 [http-nio-8090-exec-1] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:51:05,834 [http-nio-8090-exec-3] Controller - Calling GetAllTransactionsFlow flow
+[INFO ] 2022-06-24T13:51:05,888 [http-nio-8090-exec-3] Controller - Called GetAllTransactionsFlow flow
+[INFO ] 2022-06-24T13:51:07,063 [http-nio-8090-exec-4] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:51:07,110 [http-nio-8090-exec-4] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:51:07,893 [http-nio-8090-exec-7] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T13:51:32,833 [http-nio-8090-exec-10] Controller - Calling sendFile operation
+[INFO ] 2022-06-24T13:51:33,382 [http-nio-8090-exec-10] Controller - Called sendFile operation
+[INFO ] 2022-06-24T13:51:36,146 [http-nio-8090-exec-1] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:51:36,195 [http-nio-8090-exec-1] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:51:37,852 [http-nio-8090-exec-2] Controller - Calling GetAllTransactionsFlow flow
+[INFO ] 2022-06-24T13:51:37,873 [http-nio-8090-exec-2] Controller - Called GetAllTransactionsFlow flow
+[INFO ] 2022-06-24T13:51:45,033 [http-nio-8090-exec-4] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:51:45,062 [http-nio-8090-exec-4] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:52:10,953 [http-nio-8090-exec-7] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:52:10,978 [http-nio-8090-exec-7] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:52:11,903 [http-nio-8090-exec-8] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:52:11,926 [http-nio-8090-exec-8] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:52:13,871 [http-nio-8090-exec-9] Controller - Calling receiveFile operation
+[INFO ] 2022-06-24T13:52:14,818 [http-nio-8090-exec-9] Controller - Called receiveFile operation
+[INFO ] 2022-06-24T13:52:14,833 [http-nio-8090-exec-10] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:52:14,906 [http-nio-8090-exec-10] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:52:20,319 [http-nio-8090-exec-5] Controller - Calling GetAllTransactionsFlow flow
+[INFO ] 2022-06-24T13:52:20,350 [http-nio-8090-exec-5] Controller - Called GetAllTransactionsFlow flow
+[INFO ] 2022-06-24T13:52:21,632 [http-nio-8090-exec-1] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:52:21,657 [http-nio-8090-exec-1] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:52:22,042 [http-nio-8090-exec-2] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T13:52:30,447 [http-nio-8090-exec-4] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:52:30,469 [http-nio-8090-exec-4] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:52:36,945 [http-nio-8090-exec-7] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:52:36,967 [http-nio-8090-exec-7] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:53:12,982 [http-nio-8090-exec-9] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:53:13,010 [http-nio-8090-exec-9] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:53:19,982 [http-nio-8090-exec-5] Controller - Calling GetAllTransactionsFlow flow
+[INFO ] 2022-06-24T13:53:20,015 [http-nio-8090-exec-5] Controller - Called GetAllTransactionsFlow flow
+[INFO ] 2022-06-24T13:53:23,303 [http-nio-8090-exec-1] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:53:23,335 [http-nio-8090-exec-1] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:53:41,526 [http-nio-8080-exec-4] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T13:53:41,579 [http-nio-8080-exec-4] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T13:55:27,030 [http-nio-8080-exec-6] Controller - Calling receiveFile operation
+[INFO ] 2022-06-24T14:52:31,975 [http-nio-8080-exec-10] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T14:54:14,992 [http-nio-8080-exec-1] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T14:54:15,090 [http-nio-8080-exec-1] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T14:54:15,694 [http-nio-8080-exec-5] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T14:54:27,799 [http-nio-8080-exec-4] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T14:54:27,890 [http-nio-8080-exec-4] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T14:54:28,339 [http-nio-8080-exec-9] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T14:54:33,462 [http-nio-8080-exec-3] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T14:54:33,568 [http-nio-8080-exec-3] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T14:54:34,710 [http-nio-8080-exec-6] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T14:54:57,881 [http-nio-8080-exec-7] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T14:55:00,086 [http-nio-8080-exec-10] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T14:55:00,142 [http-nio-8080-exec-10] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T14:55:00,464 [http-nio-8080-exec-8] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T14:56:01,051 [http-nio-8080-exec-1] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T14:56:04,473 [http-nio-8080-exec-5] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T14:56:04,528 [http-nio-8080-exec-5] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T14:56:05,164 [http-nio-8080-exec-4] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T14:59:11,468 [http-nio-8080-exec-3] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T15:02:20,469 [http-nio-8080-exec-7] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T15:03:22,302 [http-nio-8080-exec-8] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T15:03:24,813 [http-nio-8080-exec-2] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T15:03:24,910 [http-nio-8080-exec-2] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T15:03:40,198 [http-nio-8080-exec-1] Controller - Calling receiveAllAccounts operation
+[INFO ] 2022-06-24T15:05:11,673 [http-nio-8080-exec-9] Controller - Calling sendFile operation
+[INFO ] 2022-06-24T15:05:12,246 [http-nio-8080-exec-9] Controller - Called sendFile operation
+[INFO ] 2022-06-24T15:05:15,117 [http-nio-8080-exec-3] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T15:05:15,182 [http-nio-8080-exec-3] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T15:05:23,409 [http-nio-8080-exec-7] Controller - Calling GetAllTransactionsFlow flow
+[INFO ] 2022-06-24T15:05:23,489 [http-nio-8080-exec-7] Controller - Called GetAllTransactionsFlow flow
+[INFO ] 2022-06-24T15:05:24,770 [http-nio-8080-exec-10] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T15:05:24,821 [http-nio-8080-exec-10] Controller - Called MyTransfer flow
+[INFO ] 2022-06-24T15:05:25,719 [http-nio-8080-exec-8] Controller - Calling GetAllTransactionsFlow flow
+[INFO ] 2022-06-24T15:05:25,739 [http-nio-8080-exec-8] Controller - Called GetAllTransactionsFlow flow
+[INFO ] 2022-06-24T15:05:26,870 [http-nio-8080-exec-2] Controller - Calling MyTransfer flow
+[INFO ] 2022-06-24T15:05:26,928 [http-nio-8080-exec-2] Controller - Called MyTransfer flow

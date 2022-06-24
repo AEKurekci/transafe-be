@@ -10,7 +10,6 @@ import net.corda.transafe.contracts.TransferContract;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 @Getter
