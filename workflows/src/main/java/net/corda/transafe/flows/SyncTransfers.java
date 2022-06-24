@@ -40,6 +40,6 @@ public class SyncTransfers extends FlowLogic<String>{
         }catch (Exception e){
             throw new FlowException("TransferState with id "+ transferId +" not found.");
         }
-        return "Game synced";
+        return "Transfers synced";
     }
 }

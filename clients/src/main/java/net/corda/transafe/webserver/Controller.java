@@ -6,7 +6,7 @@ import net.corda.client.jackson.JacksonSupport;
 import net.corda.core.contracts.StateAndRef;
 import net.corda.core.identity.CordaX500Name;
 import net.corda.core.messaging.CordaRPCOps;
-import net.corda.transafe.accountUtilities.MyTransfer;
+import net.corda.transafe.utilities.MyTransfer;
 import net.corda.transafe.flows.GetAllTransactionsFlow;
 import net.corda.transafe.request.*;
 import net.corda.transafe.response.*;

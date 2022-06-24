@@ -6,8 +6,8 @@ import lombok.Setter;
 import net.corda.core.contracts.StateAndRef;
 import net.corda.core.identity.Party;
 import net.corda.core.messaging.CordaRPCOps;
-import net.corda.transafe.accountUtilities.CreateNewAccount;
-import net.corda.transafe.accountUtilities.ShareAccountTo;
+import net.corda.transafe.utilities.CreateNewAccount;
+import net.corda.transafe.utilities.ShareAccountTo;
 import net.corda.transafe.flows.GetAllAccountsFlow;
 import net.corda.transafe.request.HandShakeRequest;
 import net.corda.transafe.response.HandShakeResponse;
@@ -30,7 +30,7 @@ public class AccountManagementService implements IAccountManagementService{
     public HandShakeResponse handShake(HandShakeRequest request) throws ExecutionException, InterruptedException {
         HandShakeResponse response = new HandShakeResponse();
         Set<Party> matchingPasties = proxy.partiesFromName(request.getTargetNodeName(),false);
-        Iterator iter = matchingPasties.iterator();
+        Iterator<Party> iter = matchingPasties.iterator();
         String result = proxy.startTrackedFlowDynamic(ShareAccountTo.class,request.getFromPerson(),iter.next()).getReturnValue().get();
         response.setMessage(result);
         return response;

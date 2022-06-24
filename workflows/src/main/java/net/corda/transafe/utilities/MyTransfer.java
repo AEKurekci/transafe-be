@@ -1,4 +1,4 @@
-package net.corda.transafe.accountUtilities;
+package net.corda.transafe.utilities;
 
 import co.paralleluniverse.fibers.Suspendable;
 import com.r3.corda.lib.accounts.contracts.states.AccountInfo;
@@ -29,7 +29,7 @@ public class MyTransfer extends FlowLogic<List<StateAndRef<TransferState>>>{
     public List<StateAndRef<TransferState>> call() throws FlowException {
         AccountService accountService = getServiceHub().cordaService(KeyManagementBackedAccountService.class);
         if(accountService.accountInfo(whoAmI).isEmpty()){
-            throw new FlowException("Girilen isme ait hesap oluşturulmamıştır. Uygulama yöneticisi ile iletişime geçiniz.");
+            throw new FlowException("Girilen isme ait hesap bulunamamistir. Uygulama yoneticisi ile iletisime geciniz.");
         }
         AccountInfo myAccount = accountService.accountInfo(whoAmI).get(0).getState().getData();
         QueryCriteria.VaultQueryCriteria criteria = new QueryCriteria.VaultQueryCriteria().withExternalIds(Collections.singletonList(myAccount.getIdentifier().getId()));

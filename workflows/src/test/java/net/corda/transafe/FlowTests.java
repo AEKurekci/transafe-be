@@ -7,7 +7,7 @@ import com.r3.corda.lib.accounts.workflows.services.KeyManagementBackedAccountSe
 import net.corda.core.contracts.StateAndRef;
 import net.corda.core.identity.CordaX500Name;
 import net.corda.core.node.NetworkParameters;
-import net.corda.transafe.accountUtilities.CreateNewAccount;
+import net.corda.transafe.utilities.CreateNewAccount;
 import net.corda.testing.node.*;
 import org.junit.After;
 import org.junit.Before;
@@ -48,7 +48,7 @@ public class FlowTests {
     }
 
     @Test
-    public void AccountCreation() throws ExecutionException, InterruptedException {
+    public void AccountCreation() {
         CreateNewAccount createAcct = new CreateNewAccount("TestAccountA");
         Future<String> future = a.startFlow(createAcct);
         network.runNetwork();
