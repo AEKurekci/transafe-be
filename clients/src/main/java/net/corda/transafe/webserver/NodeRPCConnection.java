@@ -1,5 +1,6 @@
 package net.corda.transafe.webserver;
 
+import lombok.Setter;
 import net.corda.client.rpc.CordaRPCClient;
 import net.corda.client.rpc.CordaRPCConnection;
 import net.corda.core.messaging.CordaRPCOps;
@@ -16,6 +17,7 @@ import javax.annotation.PreDestroy;
  * The RPC connection is configured using command line arguments.
  */
 @Component
+@Setter
 public class NodeRPCConnection implements AutoCloseable {
     // The host of the node we are connecting to.
     @Value("${config.rpc.host}")
