@@ -44,7 +44,7 @@ public class DocumentTransferServiceTest {
 
     }
 
-
+    @Test
     public void receiveFile() throws ExecutionException, InterruptedException {
         //Given
         ReceiveFileRequest request = new ReceiveFileRequest();
